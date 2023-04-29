@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Speeds { Slow = 0, Normal = 1, Fast = 2, Faster = 3, Fastest = 4 };
+public enum Speeds { Slow = 0, Normal = 1, Fast = 2, Faster = 3, Fastest = 4, None = 5 };
 public enum Gamemodes { Cube = 0, Ship = 1 };
 
 public class Movement : MonoBehaviour
@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     public Speeds CurrentSpeed;
     public Gamemodes CurrentGamemode;
     //                       0      1      2       3      4
-    float[] SpeedValues = { 8.6f, 10.4f, 12.96f, 15.6f, 19.27f };
+    float[] SpeedValues = { 8.6f, 10.4f, 12.96f, 15.6f, 19.27f, 0.0f };
 
     public Transform GroundCheckTransform;
     public float GroundCheckRadius;
@@ -54,6 +54,13 @@ public class Movement : MonoBehaviour
 
     void Cube()
     {
+        if (TouchingWall())
+        {
+            print("Touched a wall");
+            CurrentSpeed = Speeds.None;
+            rb.velocity = Vector3.zero;
+        }
+
         if (OnGround())
         {
             Vector3 Rotation = Sprite.rotation.eulerAngles;
@@ -72,7 +79,6 @@ public class Movement : MonoBehaviour
         }
 
         rb.gravityScale = 12.41067f * Gravity;
-
     }
 
     void Ship()
