@@ -75,7 +75,8 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            Sprite.Rotate(Vector3.back, 452.4152186f * Time.deltaTime * Gravity);
+            // Un-comment if you want rotation when the player jumps (doesn't work very well)
+            // Sprite.Rotate(Vector3.back, 2 * 452.4152186f * Time.deltaTime * Gravity);
         }
 
         rb.gravityScale = 12.41067f * Gravity;
