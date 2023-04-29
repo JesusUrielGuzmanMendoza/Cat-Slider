@@ -1,0 +1,258 @@
+commit 764c64e8c82bdd52d03eb89b301009b4e8cc26a7
+Author: burinson <garentei@gmail.com>
+Date:   Sat Apr 29 13:20:53 2023 -0600
+
+    Proyecto final
+
+commit ddb3d5baa8265c0bfc887cbe126dba1abd4c84cf
+Author: burinson <garentei@gmail.com>
+Date:   Sat Apr 29 13:19:57 2023 -0600
+
+    gitignore
+
+commit b8c508a8f88326389dab2b7783537a3ebbd9d3a3
+Author: Xander-1103 <123825776+Xander-1103@users.noreply.github.com>
+Date:   Sat Mar 11 03:13:00 2023 -0600
+
+    Add files via upload
+
+commit 38fc8723d699ea935e3b1f2ff2b6d1178e9e30cd
+Author: Maximiliano <maximiliano.diazdesandi7537@alumnos.udg.mx>
+Date:   Fri Mar 3 12:58:16 2023 -0600
+
+    Físicas de Colisión
+    
+    Se creo un escenario donde se aplica colisión y fricción con las físicas de blender.
+
+commit 30989b94a3a5cfaaba843e9be5cbf7440c45b149
+Merge: a5d7267b 2f432edd
+Author: burinson <garentei@gmail.com>
+Date:   Fri Feb 10 19:35:14 2023 -0600
+
+    Animar pinguino y gallina
+
+commit a5d7267b3d93793be4eb092087c91ecdcca7b0af
+Author: burinson <garentei@gmail.com>
+Date:   Fri Feb 10 19:30:57 2023 -0600
+
+    Animar al pinguino y la gallina
+
+commit 2f432edd1260450365f4619f5d0a813f78600b33
+Author: robertomontoya01 <123822987+robertomontoya01@users.noreply.github.com>
+Date:   Fri Feb 10 18:00:43 2023 -0600
+
+    animacion
+
+commit e4e8b4373fa8c0f7edca35210d936ce8919e74f4
+Author: Maximiliano <maximiliano.diazdesandi7537@alumnos.udg.mx>
+Date:   Fri Feb 10 01:14:09 2023 -0600
+
+    Animación del perro y carro
+    
+    Se hizo la animación del perro saltando y del carro en movimiento.
+
+commit 884cd566aa53b4f42dbe1f3541c378b8e5e445d6
+Author: Oscar <drumssand@gmail.com>
+Date:   Tue Feb 7 20:10:58 2023 -0600
+
+    improve renders of via
+
+commit 40ad6b6d6d76a12e61f613cac90c1a18186e0a76
+Author: Oscar <drumssand@gmail.com>
+Date:   Tue Feb 7 19:57:54 2023 -0600
+
+    improve via added color
+
+commit 0991e3d8884455b5c4a74c6110cf207368f4f7b8
+Author: Oscar <drumssand@gmail.com>
+Date:   Tue Feb 7 19:11:12 2023 -0600
+
+    via added
+
+commit cf35382662b62536cb109dc7c87d429e7f8fcfe0
+Merge: 238b6700 0eace559
+Author: Maximiliano <maximiliano.diazdesandi7537@alumnos.udg.mx>
+Date:   Sat Feb 4 11:22:22 2023 -0600
+
+    Merge branch 'master' of https://github.com/JesusUrielGuzmanMendoza/Equipo6
+
+commit 238b67000d23576abf6aeb2152fb36f6856e223b
+Author: Maximiliano <maximiliano.diazdesandi7537@alumnos.udg.mx>
+Date:   Sat Feb 4 11:20:48 2023 -0600
+
+    Escenario actualizado
+    
+    Segunda versión del escenario
+
+commit 0eace55967beaf1496bbbecc5e50e2550d130e6b
+Author: burinson <garentei@gmail.com>
+Date:   Sat Feb 4 10:50:25 2023 -0600
+
+    Carretera
+
+commit d36fc4b40bd4b43a2040ad6904c7e6b7a1ee3f27
+Merge: aeea71ec 36c50a4c
+Author: burinson <garentei@gmail.com>
+Date:   Sat Feb 4 10:48:45 2023 -0600
+
+    Organizar archivos
+
+commit aeea71ecdc75f2969dd974e983cf19f5919fcbf2
+Author: burinson <garentei@gmail.com>
+Date:   Sat Feb 4 10:47:59 2023 -0600
+
+    Organizar archivos
+
+commit 36c50a4c142d6aff25aabcc153af32cb555c6449
+Author: Maximiliano <maximiliano.diazdesandi7537@alumnos.udg.mx>
+Date:   Sat Feb 4 10:47:50 2023 -0600
+
+    Carretera
+    
+    Primer Modelo
+
+commit 3a2ed84a83e4eca6ce7ed46808472fc6d02f9b51
+Merge: 8e276250 a2fecd2a
+Author: burinson <garentei@gmail.com>
+Date:   Sat Feb 4 10:41:41 2023 -0600
+
+    Agua
+
+commit 8e276250def067b73d87fd1a4126720b74148bc8
+Author: burinson <garentei@gmail.com>
+Date:   Sat Feb 4 10:40:56 2023 -0600
+
+    Agua
+
+commit a2fecd2a007034579295abbd2a9a6bb13373c24e
+Author: robertomontoya01 <123822987+robertomontoya01@users.noreply.github.com>
+Date:   Sat Feb 4 10:37:47 2023 -0600
+
+    Add files via upload
+    
+    Tronco
+
+commit 94aa45e11f1e01b6412d0c002a903e41767eb6e6
+Merge: 4738c5e7 105f60e9
+Author: Maximiliano <maximiliano.diazdesandi7537@alumnos.udg.mx>
+Date:   Sat Feb 4 10:36:38 2023 -0600
+
+    Merge branch 'master' of https://github.com/JesusUrielGuzmanMendoza/Equipo6
+
+commit 4738c5e7a85929ee8bdde6a9fcc6153f0cc13aec
+Author: Maximiliano <maximiliano.diazdesandi7537@alumnos.udg.mx>
+Date:   Sat Feb 4 10:36:05 2023 -0600
+
+    Modelo del carro
+    
+    Primer modelo
+
+commit 105f60e9c91050c49eab9a9d83795d14e3c2a5bf
+Author: burinson <garentei@gmail.com>
+Date:   Sat Feb 4 10:26:18 2023 -0600
+
+    Carpeta de modelos
+
+commit d7a4d5c883d07e404c002e34129ef53176df5efa
+Author: burinson <garentei@gmail.com>
+Date:   Sat Feb 4 10:24:49 2023 -0600
+
+    Gallina
+
+commit 4fadea53445ebbdacfdaa3f862fa3f3e0c3203c0
+Merge: a686c1e1 54920ad3
+Author: Maximiliano <maximiliano.diazdesandi7537@alumnos.udg.mx>
+Date:   Sat Feb 4 09:33:27 2023 -0600
+
+    Merge branch 'master' of https://github.com/JesusUrielGuzmanMendoza/Equipo6
+
+commit 54920ad33e585b0fbdc278ecc58c282352574b2f
+Author: robertomontoya01 <123822987+robertomontoya01@users.noreply.github.com>
+Date:   Sat Feb 4 09:32:54 2023 -0600
+
+    Delete Carro_tubo.mtl
+
+commit 4e7cd418639fb585008ce743ac54ce55de28331f
+Author: robertomontoya01 <123822987+robertomontoya01@users.noreply.github.com>
+Date:   Sat Feb 4 09:32:45 2023 -0600
+
+    Delete Carro_tubo.obj
+
+commit a686c1e187cee37465fdc7c0f3504f3d10d7f894
+Author: Maximiliano <maximiliano.diazdesandi7537@alumnos.udg.mx>
+Date:   Sat Feb 4 09:29:48 2023 -0600
+
+    Escenario final
+
+commit 6355d06c51b9040a66c34259afbcab698a44fdee
+Author: robertomontoya01 <123822987+robertomontoya01@users.noreply.github.com>
+Date:   Sat Feb 4 09:16:10 2023 -0600
+
+    Add files via upload
+
+commit 0c20a4fdfd575514174d81fea969de6c60311d60
+Author: Maximiliano <maximiliano.diazdesandi7537@alumnos.udg.mx>
+Date:   Sat Jan 28 11:57:54 2023 -0600
+
+    Escenario
+
+commit bbfc69fc00cd1660a9095e99603a85f59398f80b
+Merge: c7a57a9f b2341135
+Author: Maximiliano <maximiliano.diazdesandi7537@alumnos.udg.mx>
+Date:   Sat Jan 28 11:26:14 2023 -0600
+
+    Merge branch 'master' of https://github.com/JesusUrielGuzmanMendoza/Equipo6
+
+commit c7a57a9fbccd8d49ceb0d0e1377308beb8e12b7a
+Author: Maximiliano <maximiliano.diazdesandi7537@alumnos.udg.mx>
+Date:   Sat Jan 28 11:25:49 2023 -0600
+
+    Update Arbol.mtl
+
+commit 12e859dd41f53b1caa39b7addb49df1c3b1bded1
+Author: Maximiliano <maximiliano.diazdesandi7537@alumnos.udg.mx>
+Date:   Sat Jan 28 11:25:46 2023 -0600
+
+    Modelos .obj
+    
+    ...
+
+commit b234113509e9099396c4b6e36cb6a694fbbde3f2
+Author: Xander-1103 <123825776+Xander-1103@users.noreply.github.com>
+Date:   Sat Jan 28 11:22:36 2023 -0600
+
+    Add files via upload
+
+commit 340e8a171789eec1ace651d851f69473d9b47a41
+Author: Maximiliano <maximiliano.diazdesandi7537@alumnos.udg.mx>
+Date:   Sat Jan 28 11:12:25 2023 -0600
+
+    Eliminar basura
+
+commit 93679bcb7355553cb7c1bad22ffb711bd83ab058
+Author: Maximiliano <maximiliano.diazdesandi7537@alumnos.udg.mx>
+Date:   Sat Jan 28 11:11:08 2023 -0600
+
+    Modelos
+    
+    ...
+
+commit 5e668df18471844dd3e9222356fbdc4b4bc39e38
+Author: burinson <garentei@gmail.com>
+Date:   Sat Jan 28 11:03:22 2023 -0600
+
+    Agregando modelado de pinguino
+
+commit e228f58ccb1cfaffa7eb9cc64e9000d76ee87961
+Author: robertomontoya01 <123822987+robertomontoya01@users.noreply.github.com>
+Date:   Sat Jan 28 10:57:11 2023 -0600
+
+    Add files via upload
+    
+    Carro y un tubo de tren
+
+commit 20c5ffb7a1ecb1ad69d035c0ef7d31f6457761f6
+Author: burinson <garentei@gmail.com>
+Date:   Sat Jan 28 10:48:46 2023 -0600
+
+    ???
