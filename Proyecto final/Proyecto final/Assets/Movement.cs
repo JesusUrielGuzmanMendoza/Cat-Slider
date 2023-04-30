@@ -38,6 +38,17 @@ public class Movement : MonoBehaviour
         CurrentSpeed = PreviousSpeed;
 
     }
+    IEnumerator ToggleGravity()
+    {
+        SpriteScript.instance.EnableGravitySprite();
+        Gravity *= -1;
+        rb.gravityScale = Mathf.Abs(rb.gravityScale) * Gravity;
+        yield return new WaitForSeconds(10f);
+        Gravity *= -1;
+        rb.gravityScale = Mathf.Abs(rb.gravityScale) * Gravity;
+        SpriteScript.instance.EnablePlayerSprite();
+
+    }
     void FixedUpdate()
     {
         transform.position += Vector3.right * SpeedValues[(int)CurrentSpeed] * Time.deltaTime;
@@ -115,8 +126,8 @@ public class Movement : MonoBehaviour
                 CurrentGamemode = Gamemode;
                 break;
             case 2:
-                Gravity *= -1;
-                rb.gravityScale = Mathf.Abs(rb.gravityScale) * Gravity;
+                StopCoroutine(ToggleGravity());
+                StartCoroutine(ToggleGravity());
                 break;
         }
     }
