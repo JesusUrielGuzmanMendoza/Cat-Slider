@@ -6,6 +6,7 @@ using UnityEngine;
 
 public enum Speeds { Slow = 0, Normal = 1, Fast = 2, Faster = 3, Fastest = 4, None = 5 };
 public enum Gamemodes { Cube = 0, Ship = 1 };
+public enum Gravity { Normal = 0, UpsideDown = 1 };
 
 public class Movement : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Movement : MonoBehaviour
     public Gamemodes CurrentGamemode;
     //                       0      1      2       3      4
     float[] SpeedValues = { 8.6f, 10.4f, 12.96f, 15.6f, 19.27f, 0.0f };
+    int[] GravityValues = { 1, -1 };
 
     public Transform GroundCheckTransform;
     public float GroundCheckRadius;
@@ -21,7 +23,7 @@ public class Movement : MonoBehaviour
 
     Rigidbody2D rb;
 
-    int Gravity = 1;
+    Gravity CurrentGravity = Gravity.Normal;
 
     void Start()
     {
@@ -32,19 +34,19 @@ public class Movement : MonoBehaviour
     {
         transform.position += Vector3.right * SpeedValues[(int)CurrentSpeed] * Time.deltaTime;
 
-        if (rb.velocity.y * Gravity < -24.2f)
-            rb.velocity = new Vector2(rb.velocity.x, -24.2f * Gravity);
+        if (rb.velocity.y * GravityValues[(int)CurrentGravity] < -24.2f)
+            rb.velocity = new Vector2(rb.velocity.x, -24.2f * GravityValues[(int)CurrentGravity]);
 
-        if (rb.velocity.y * Gravity > 24.2f)
+        if (rb.velocity.y * GravityValues[(int)CurrentGravity] > 24.2f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, 24.2f * Gravity);
+            rb.velocity = new Vector2(rb.velocity.x, 24.2f * GravityValues[(int)CurrentGravity]);
         }
         Invoke(CurrentGamemode.ToString(), 0);
     }
 
     bool OnGround()
     {
-        return Physics2D.OverlapBox(GroundCheckTransform.position + Vector3.up - Vector3.up * (Gravity - 1 / -2), Vector2.right * 1.1f + Vector2.up * GroundCheckRadius, 0, GroundMask);
+        return Physics2D.OverlapBox(GroundCheckTransform.position + Vector3.up - Vector3.up * (GravityValues[(int)CurrentGravity] - 1 / -2), Vector2.right * 1.1f + Vector2.up * GroundCheckRadius, 0, GroundMask);
     }
 
     bool TouchingWall()
@@ -70,7 +72,7 @@ public class Movement : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 rb.velocity = Vector2.zero;
-                rb.AddForce(Vector2.up * 26.6581f * Gravity, ForceMode2D.Impulse);
+                rb.AddForce(Vector2.up * 26.6581f * GravityValues[(int)CurrentGravity], ForceMode2D.Impulse);
             }
         }
         else
@@ -79,7 +81,7 @@ public class Movement : MonoBehaviour
             // Sprite.Rotate(Vector3.back, 2 * 452.4152186f * Time.deltaTime * Gravity);
         }
 
-        rb.gravityScale = 12.41067f * Gravity;
+        rb.gravityScale = 12.41067f * GravityValues[(int)CurrentGravity];
     }
 
     void Ship()
@@ -91,10 +93,10 @@ public class Movement : MonoBehaviour
         else
             rb.gravityScale = 4.314969f;
 
-        rb.gravityScale = rb.gravityScale * Gravity;
+        rb.gravityScale = rb.gravityScale * GravityValues[(int)CurrentGravity];
     }
 
-    public void ChangeThroughPortal(Gamemodes Gamemode, Speeds Speed, int gravity, int State)
+    public void ChangeThroughPortal(Gamemodes Gamemode, Speeds Speed, Gravity Gravity, int State)
     {
         switch (State)
         {
@@ -105,8 +107,8 @@ public class Movement : MonoBehaviour
                 CurrentGamemode = Gamemode;
                 break;
             case 2:
-                Gravity = gravity;
-                rb.gravityScale = Mathf.Abs(rb.gravityScale) * gravity;
+                CurrentGravity = Gravity;
+                rb.gravityScale = Mathf.Abs(rb.gravityScale) * GravityValues[(int)CurrentGravity];
                 break;
         }
     }
