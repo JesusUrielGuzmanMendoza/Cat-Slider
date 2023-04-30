@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum Speeds { Slow = 0, Normal = 1, Fast = 2, Faster = 3, Fastest = 4, None = 5 };
 public enum Gamemodes { Cube = 0, Ship = 1 };
@@ -11,8 +12,10 @@ public class Movement : MonoBehaviour
 {
     public Speeds CurrentSpeed;
     public Gamemodes CurrentGamemode;
+    public int Respawn;
     //                       0      1      2       3      4
     float[] SpeedValues = { 8.6f, 10.4f, 12.96f, 15.6f, 19.27f, 0.0f };
+    int[] PointValues = { 500, 1000, 5000, 100 };
 
     public Transform GroundCheckTransform;
     public float GroundCheckRadius;
@@ -63,9 +66,7 @@ public class Movement : MonoBehaviour
     {
         if (TouchingWall())
         {
-            print("Touched a wall");
-            CurrentSpeed = Speeds.None;
-            rb.velocity = Vector3.zero;
+            SceneManager.LoadScene(Respawn);
         }
 
         if (OnGround())
@@ -108,7 +109,7 @@ public class Movement : MonoBehaviour
             case 0:
                 StopCoroutine(GainSpeed(Speed));
                 StartCoroutine(GainSpeed(Speed));
-                ScoreManager.instance.AddPoint();
+                ScoreManager.instance.UpdateScore(PointValues[State]);
                 break;
             case 1:
                 CurrentGamemode = Gamemode;

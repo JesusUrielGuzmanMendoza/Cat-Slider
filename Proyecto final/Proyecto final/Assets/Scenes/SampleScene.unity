@@ -883,7 +883,7 @@ GameObject:
   - component: {fileID: 540166900}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -966,6 +966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentSpeed: 0
   CurrentGamemode: 0
+  Respawn: 0
   GroundCheckTransform: {fileID: 438417827}
   GroundCheckRadius: 0.05
   GroundMask:
