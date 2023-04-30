@@ -27,7 +27,14 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
+    IEnumerator GainSpeed(Speeds Speed)
+    {
+        Speeds PreviousSpeed = CurrentSpeed;
+        CurrentSpeed = Speed;
+        yield return new WaitForSeconds(1f);
+        CurrentSpeed = PreviousSpeed;
 
+    }
     void FixedUpdate()
     {
         transform.position += Vector3.right * SpeedValues[(int)CurrentSpeed] * Time.deltaTime;
@@ -99,7 +106,8 @@ public class Movement : MonoBehaviour
         switch (State)
         {
             case 0:
-                CurrentSpeed = Speed;
+                StopCoroutine(GainSpeed(Speed));
+                StartCoroutine(GainSpeed(Speed));
                 break;
             case 1:
                 CurrentGamemode = Gamemode;
