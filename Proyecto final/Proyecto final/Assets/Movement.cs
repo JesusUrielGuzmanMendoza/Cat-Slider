@@ -31,7 +31,7 @@ public class Movement : MonoBehaviour
     {
         Speeds PreviousSpeed = CurrentSpeed;
         CurrentSpeed = Speed;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
         CurrentSpeed = PreviousSpeed;
 
     }
@@ -108,6 +108,7 @@ public class Movement : MonoBehaviour
             case 0:
                 StopCoroutine(GainSpeed(Speed));
                 StartCoroutine(GainSpeed(Speed));
+                ScoreManager.instance.AddPoint();
                 break;
             case 1:
                 CurrentGamemode = Gamemode;

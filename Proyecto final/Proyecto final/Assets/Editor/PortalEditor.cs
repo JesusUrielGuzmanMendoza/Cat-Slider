@@ -5,7 +5,7 @@ public class PortalEditor : Editor
 {
     public enum DisplayCategory
     {
-        Gamemode, Speed, Gravity
+        Normal, Gamemode, Speed, Gravity
     }
     public DisplayCategory categoryToDisplay;
 
