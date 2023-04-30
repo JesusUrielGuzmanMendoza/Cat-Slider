@@ -39,10 +39,6 @@ public class PortalEditor : Editor
                 DisplayProperty("Gamemode", 1);
                 break;
 
-            case DisplayCategory.Gravity:
-                DisplayProperty("Gravity", 2);
-                break;
-
             case DisplayCategory.Speed:
                 DisplayProperty("Speed", 0);
                 break;
