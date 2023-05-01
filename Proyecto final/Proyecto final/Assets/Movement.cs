@@ -25,6 +25,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
 
     int Gravity = 1;
+    bool Jumping = false;
 
     void Start()
     {
@@ -93,17 +94,19 @@ public class Movement : MonoBehaviour
 
         if (OnGround())
         {
+            Jumping = false;
             Vector3 Rotation = Sprite.rotation.eulerAngles;
             Rotation.z = Mathf.Round(Rotation.z / 360) * 360;
             Sprite.rotation = Quaternion.Euler(Rotation);
 
             if (Input.GetMouseButton(0))
             {
+                Jumping = true;
                 rb.velocity = Vector2.zero;
                 rb.AddForce(Vector2.up * 26.6581f * Gravity, ForceMode2D.Impulse);
             }
         }
-        else
+        else if (Jumping)
         {
             // Un-comment if you want rotation when the player jumps (doesn't work very well)
             Sprite.Rotate(Vector3.back, 2 * 452.4152186f * Time.deltaTime * Gravity);
