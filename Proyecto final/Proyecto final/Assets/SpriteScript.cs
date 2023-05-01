@@ -6,7 +6,7 @@ public class SpriteScript : MonoBehaviour
 {
     public static SpriteScript instance;
     private SpriteRenderer SpriteRenderer;
-    private Sprite PlayerSprite, PlayerGravitySprite;
+    private Sprite PlayerSprite, PlayerGravitySprite, PlayerShipSprite;
     // Start is called before the first frame update
 
     void Awake()
@@ -19,6 +19,7 @@ public class SpriteScript : MonoBehaviour
         SpriteRenderer = GetComponent<SpriteRenderer>();
         PlayerSprite = Resources.Load<Sprite>("Player");
         PlayerGravitySprite = Resources.Load<Sprite>("PlayerGravity");
+        PlayerShipSprite = Resources.Load<Sprite>("PlayerShip");
         SpriteRenderer.sprite = PlayerSprite;
     }
 
@@ -27,8 +28,14 @@ public class SpriteScript : MonoBehaviour
     {
         SpriteRenderer.sprite = PlayerGravitySprite;
     }
+
     public void EnablePlayerSprite()
     {
         SpriteRenderer.sprite = PlayerSprite;
+    }
+
+    public void EnableShipSprite()
+    {
+        SpriteRenderer.sprite = PlayerShipSprite;
     }
 }

@@ -49,6 +49,17 @@ public class Movement : MonoBehaviour
         SpriteScript.instance.EnablePlayerSprite();
 
     }
+
+    IEnumerator EnableShip()
+    {
+        SpriteScript.instance.EnableShipSprite();
+        CurrentGamemode = Gamemodes.Ship;
+        yield return new WaitForSeconds(10f);
+        CurrentGamemode = Gamemodes.Cube;
+        SpriteScript.instance.EnablePlayerSprite();
+
+    }
+
     void FixedUpdate()
     {
         transform.position += Vector3.right * SpeedValues[(int)CurrentSpeed] * Time.deltaTime;
@@ -123,9 +134,11 @@ public class Movement : MonoBehaviour
                 ScoreManager.instance.UpdateScore(PointValues[State]);
                 break;
             case 1:
-                CurrentGamemode = Gamemode;
+                StopCoroutine(EnableShip());
+                StartCoroutine(EnableShip());
                 break;
             case 2:
+                ToggleGravity();
                 StopCoroutine(ToggleGravity());
                 StartCoroutine(ToggleGravity());
                 break;
