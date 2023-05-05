@@ -27,7 +27,7 @@ public class SoundScript : MonoBehaviour
                 AudioSource.PlayOneShot(EatBreadSound);
                 break;
             case "DrinkSound":
-                AudioSource.PlayOneShot(DrinkSound);
+                AudioSource.PlayOneShot(DrinkSound, 3f);
                 break;
         }
     }

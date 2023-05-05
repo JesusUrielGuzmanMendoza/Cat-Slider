@@ -44,7 +44,7 @@ public class Movement : MonoBehaviour {
   IEnumerator GainSpeed(Speeds Speed) {
     Speeds PreviousSpeed = CurrentSpeed;
     CurrentSpeed = Speed;
-    yield return new WaitForSeconds(5f);
+    yield return new WaitForSeconds(3f);
     CurrentSpeed = PreviousSpeed;
   }
 
