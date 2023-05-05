@@ -108,6 +108,7 @@ public class Movement : MonoBehaviour {
       Sprite.rotation = Quaternion.Euler(Rotation);
 
       if (Input.GetMouseButton(0)) {
+        SoundScript.PlaySound("JumpSound");
         Jumping = true;
         rb.velocity = Vector2.zero;
         rb.AddForce(Vector2.up * 26.6581f * Gravity, ForceMode2D.Impulse);
@@ -140,6 +141,7 @@ public class Movement : MonoBehaviour {
   public void ChangeThroughPortal(Gamemodes Gamemode, Speeds Speed, Levels Level, int State) {
     switch (State) {
       case 0:
+        SoundScript.PlaySound("EatBreadSound");
         ScoreManager.instance.UpdateScore(PointValues[State]);
         break;
       case 1:
