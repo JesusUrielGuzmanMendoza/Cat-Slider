@@ -10,6 +10,7 @@ public class PortalScript : MonoBehaviour {
 
   void OnCollisionEnter2D(Collision2D collision) {
     try {
+      Destroy(gameObject);
       Movement movement = collision.gameObject.GetComponent<Movement>();
       movement.ChangeThroughPortal(Gamemode, Speed, Level, State);
     } catch {}
