@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SoundScript : MonoBehaviour
 {
-    public static AudioClip JumpSound, EatBreadSound;
+    public static AudioClip JumpSound, EatBreadSound, DrinkSound;
     static AudioSource AudioSource;
 
     // Start is called before the first frame update
     void Start() {
         JumpSound = Resources.Load<AudioClip>("JumpSound");    
         EatBreadSound = Resources.Load<AudioClip>("EatBreadSound");    
+        DrinkSound = Resources.Load<AudioClip>("DrinkSound");    
         AudioSource = GetComponent<AudioSource>();
     }
 
@@ -21,6 +22,9 @@ public class SoundScript : MonoBehaviour
                 break;
             case "EatBreadSound":
                 AudioSource.PlayOneShot(EatBreadSound);
+                break;
+            case "DrinkSound":
+                AudioSource.PlayOneShot(DrinkSound);
                 break;
         }
     }

@@ -145,6 +145,7 @@ public class Movement : MonoBehaviour {
         ScoreManager.instance.UpdateScore(PointValues[State]);
         break;
       case 1:
+        SoundScript.PlaySound("DrinkSound");
         StopCoroutine(GainSpeed(Speed));
         StartCoroutine(GainSpeed(Speed));
         ScoreManager.instance.UpdateScore(PointValues[State]);
