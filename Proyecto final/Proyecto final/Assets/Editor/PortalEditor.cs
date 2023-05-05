@@ -2,7 +2,7 @@ using UnityEditor;
 
 [CustomEditor(typeof(PortalScript)), CanEditMultipleObjects]
 public class PortalEditor : Editor {
-  public enum DisplayCategory { Normal, Gamemode, Speed, Gravity, FinishLevel }
+  public enum DisplayCategory { Normal, Speed, Gravity, Gamemode, FinishLevel }
   public DisplayCategory categoryToDisplay;
 
   bool FirstTime = true;
@@ -11,15 +11,18 @@ public class PortalEditor : Editor {
     if (FirstTime) {
       switch (serializedObject.FindProperty("State").intValue) {
         case 0:
-          categoryToDisplay = DisplayCategory.Speed;
+          categoryToDisplay = DisplayCategory.Normal;
           break;
         case 1:
-          categoryToDisplay = DisplayCategory.Gamemode;
+          categoryToDisplay = DisplayCategory.Speed;
           break;
         case 2:
           categoryToDisplay = DisplayCategory.Gravity;
           break;
         case 3:
+          categoryToDisplay = DisplayCategory.Gamemode;
+          break;
+        case 4:
           categoryToDisplay = DisplayCategory.FinishLevel;
           break;
       }
@@ -30,14 +33,20 @@ public class PortalEditor : Editor {
     EditorGUILayout.Space();
 
     switch (categoryToDisplay) {
+      case DisplayCategory.Normal:
+        DisplayProperty("Normal", 0);
+        break;
       case DisplayCategory.Speed:
-        DisplayProperty("Speed", 0);
+        DisplayProperty("Speed", 1);
+        break;
+      case DisplayCategory.Gravity:
+        DisplayProperty("Gravity", 2);
         break;
       case DisplayCategory.Gamemode:
-        DisplayProperty("Gamemode", 1);
+        DisplayProperty("Gamemode", 3);
         break;
       case DisplayCategory.FinishLevel:
-        DisplayProperty("Level", 3);
+        DisplayProperty("Level", 4);
         break;
     }
 

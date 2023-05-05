@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour {
   public Speeds CurrentSpeed;
   public Gamemodes CurrentGamemode;
   float[] SpeedValues = { 8.6f, 10.4f, 12.96f, 15.6f, 19.27f, 0.0f };
-  int[] PointValues = { 500, 1000, 5000, 100 };
+  int[] PointValues = { 100, 500, 1000, 5000 };
   Levels CurrentLevel = Levels.One;
 
   public Transform GroundCheckTransform;
@@ -140,13 +140,12 @@ public class Movement : MonoBehaviour {
   public void ChangeThroughPortal(Gamemodes Gamemode, Speeds Speed, Levels Level, int State) {
     switch (State) {
       case 0:
-        StopCoroutine(GainSpeed(Speed));
-        StartCoroutine(GainSpeed(Speed));
         ScoreManager.instance.UpdateScore(PointValues[State]);
         break;
       case 1:
-        StopCoroutine(EnableShip());
-        StartCoroutine(EnableShip());
+        StopCoroutine(GainSpeed(Speed));
+        StartCoroutine(GainSpeed(Speed));
+        ScoreManager.instance.UpdateScore(PointValues[State]);
         break;
       case 2:
         ToggleGravity();
@@ -154,6 +153,10 @@ public class Movement : MonoBehaviour {
         StartCoroutine(ToggleGravity());
         break;
       case 3:
+        StopCoroutine(EnableShip());
+        StartCoroutine(EnableShip());
+        break;
+      case 4:
         ChangeLevel(Level);
         break;
     }
