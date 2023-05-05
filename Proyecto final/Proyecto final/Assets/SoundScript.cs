@@ -6,6 +6,7 @@ public class SoundScript : MonoBehaviour
 {
     public static AudioClip JumpSound, EatBreadSound, DrinkSound;
     static AudioSource AudioSource;
+    public AudioClip AudioClip;
 
     // Start is called before the first frame update
     void Start() {
@@ -13,6 +14,8 @@ public class SoundScript : MonoBehaviour
         EatBreadSound = Resources.Load<AudioClip>("EatBreadSound");    
         DrinkSound = Resources.Load<AudioClip>("DrinkSound");    
         AudioSource = GetComponent<AudioSource>();
+        AudioSource.PlayOneShot(AudioClip);
+        AudioSource.PlayScheduled(AudioSettings.dspTime + AudioClip.length);
     }
 
     public static void PlaySound(string Sound) {
