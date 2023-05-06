@@ -50,10 +50,11 @@ public class Movement : MonoBehaviour {
   }
 
   IEnumerator ToggleGravity() {
+    SoundScript.PlaySound("MagicSound");
     SpriteScript.instance.EnableGravitySprite();
     Gravity *= -1;
     rb.gravityScale = Mathf.Abs(rb.gravityScale) * Gravity;
-    yield return new WaitForSeconds(10f);
+    yield return new WaitForSeconds(8f);
     Gravity *= -1;
     rb.gravityScale = Mathf.Abs(rb.gravityScale) * Gravity;
     SpriteScript.instance.EnablePlayerSprite();
