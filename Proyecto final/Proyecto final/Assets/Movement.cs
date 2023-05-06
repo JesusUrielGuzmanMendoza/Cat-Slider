@@ -42,6 +42,7 @@ public class Movement : MonoBehaviour {
   }
 
   IEnumerator GainSpeed(Speeds Speed) {
+    SoundScript.PlaySound("DrinkSound");
     Speeds PreviousSpeed = CurrentSpeed;
     CurrentSpeed = Speed;
     yield return new WaitForSeconds(3f);
@@ -59,9 +60,10 @@ public class Movement : MonoBehaviour {
   }
 
   IEnumerator EnableShip() {
+    SoundScript.PlaySound("RocketShipSound");
     SpriteScript.instance.EnableShipSprite();
     CurrentGamemode = Gamemodes.Ship;
-    yield return new WaitForSeconds(10f);
+    yield return new WaitForSeconds(6f);
     CurrentGamemode = Gamemodes.Cube;
     SpriteScript.instance.EnablePlayerSprite();
   }
@@ -123,6 +125,10 @@ public class Movement : MonoBehaviour {
   }
 
   void Ship() {
+    if (TouchingWall()) {
+      SceneManager.LoadScene((int)CurrentLevel);
+    }
+
     Sprite.rotation = Quaternion.Euler(0, 0, rb.velocity.y * 2);
 
     if (Input.GetMouseButton(0))
@@ -145,7 +151,6 @@ public class Movement : MonoBehaviour {
         ScoreManager.instance.UpdateScore(PointValues[State]);
         break;
       case 1:
-        SoundScript.PlaySound("DrinkSound");
         StopCoroutine(GainSpeed(Speed));
         StartCoroutine(GainSpeed(Speed));
         ScoreManager.instance.UpdateScore(PointValues[State]);
@@ -158,6 +163,7 @@ public class Movement : MonoBehaviour {
       case 3:
         StopCoroutine(EnableShip());
         StartCoroutine(EnableShip());
+        ScoreManager.instance.UpdateScore(PointValues[State]);
         break;
       case 4:
         ChangeLevel(Level);

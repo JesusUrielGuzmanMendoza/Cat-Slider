@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundScript : MonoBehaviour
 {
-    public static AudioClip JumpSound, EatBreadSound, DrinkSound;
+    public static AudioClip JumpSound, EatBreadSound, DrinkSound, RocketShipSound;
     static AudioSource AudioSource;
     public AudioClip AudioClip;
 
@@ -13,6 +13,7 @@ public class SoundScript : MonoBehaviour
         JumpSound = Resources.Load<AudioClip>("JumpSound");    
         EatBreadSound = Resources.Load<AudioClip>("EatBreadSound");    
         DrinkSound = Resources.Load<AudioClip>("DrinkSound");    
+        RocketShipSound = Resources.Load<AudioClip>("RocketShipSound");    
         AudioSource = GetComponent<AudioSource>();
         AudioSource.PlayOneShot(AudioClip);
         AudioSource.PlayScheduled(AudioSettings.dspTime + AudioClip.length);
@@ -28,6 +29,9 @@ public class SoundScript : MonoBehaviour
                 break;
             case "DrinkSound":
                 AudioSource.PlayOneShot(DrinkSound, 3f);
+                break;
+            case "RocketShipSound":
+                AudioSource.PlayOneShot(RocketShipSound);
                 break;
         }
     }
