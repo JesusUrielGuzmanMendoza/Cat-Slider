@@ -6,6 +6,7 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour {
   public static ScoreManager instance;
+  public TextMeshProUGUI UsernameText;
   public TextMeshProUGUI ScoreText;
   public TextMeshProUGUI HighScoreText;
   int Score = 0;
@@ -17,6 +18,7 @@ public class ScoreManager : MonoBehaviour {
 
   void Start() {
     HighScore = PlayerPrefs.GetInt("highscore", 0);
+    UsernameText.text = PlayerPrefs.GetString("username", "Anonymous");
     ScoreText.text = Score.ToString();
     HighScoreText.text = "Highscore: " + HighScore.ToString();
   }
