@@ -13,19 +13,19 @@ public enum Gamemodes { Cube = 0, Ship }
 
 public class Movement : MonoBehaviour {
   public float CurrentSpeed;
+  private float previousSpeed;
+  private float previousDrag;
   public Gamemodes CurrentGamemode;
   int[] PointValues = { 100, 500, 1000, 5000 };
   Levels CurrentLevel = Levels.One;
-
   public Transform GroundCheckTransform;
   public float GroundCheckRadius;
   public LayerMask GroundMask;
   public Transform Sprite;
-
   Rigidbody2D rb;
-
   int Gravity = 1;
   bool Jumping = false;
+  private bool switchingGravity = false;
 
   void Start() {
     rb = GetComponent<Rigidbody2D>();
@@ -38,17 +38,23 @@ public class Movement : MonoBehaviour {
     CurrentSpeed /= 1.2f;
   }
 
-  IEnumerator ToggleGravity() {
+  void ToggleGravity() {
+    previousDrag = rb.drag;
+    rb.drag = 10f;
+    switchingGravity = true;
+    Gravity *= -1;
+    rb.gravityScale = Mathf.Abs(rb.gravityScale) * Gravity;
+    previousSpeed = CurrentSpeed;
+    CurrentSpeed = 0f;
+  }
+
+  IEnumerator EnableBalloons() {
     SoundScript.PlaySound("MagicSound");
     SpriteScript.instance.EnableGravitySprite();
-    Gravity *= -1;
-    rb.gravityScale = Mathf.Abs(rb.gravityScale) * Gravity;
-    CurrentSpeed /= 1.2f;
+    ToggleGravity();
     yield return new WaitForSeconds(8f);
-    Gravity *= -1;
-    rb.gravityScale = Mathf.Abs(rb.gravityScale) * Gravity;
     SpriteScript.instance.EnablePlayerSprite();
-    CurrentSpeed *= 1.2f;
+    ToggleGravity();
   }
 
   IEnumerator EnableShip() {
@@ -70,6 +76,7 @@ public class Movement : MonoBehaviour {
     if (rb.velocity.y * Gravity > 24.2f) {
       rb.velocity = new Vector2(rb.velocity.x, 24.2f * Gravity);
     }
+
     Invoke(CurrentGamemode.ToString(), 0);
   }
 
@@ -101,6 +108,12 @@ public class Movement : MonoBehaviour {
       Rotation.z = Mathf.Round(Rotation.z / 360) * 360;
       Sprite.rotation = Quaternion.Euler(Rotation);
 
+      if (switchingGravity) {
+        CurrentSpeed = previousSpeed;
+        rb.drag = previousDrag;
+        switchingGravity = false;
+      }
+
       if (Input.GetMouseButton(0)) {
         SoundScript.PlaySound("JumpSound");
         Jumping = true;
@@ -108,8 +121,6 @@ public class Movement : MonoBehaviour {
         rb.AddForce(Vector2.up * 26.6581f * Gravity, ForceMode2D.Impulse);
       }
     } else if (Jumping) {
-      // Un-comment if you want rotation when the player jumps (doesn't work
-      // very well)
       Sprite.Rotate(Vector3.back, 2 * 452.4152186f * Time.deltaTime * Gravity);
     }
 
@@ -148,9 +159,8 @@ public class Movement : MonoBehaviour {
         ScoreManager.instance.UpdateScore(PointValues[State]);
         break;
       case 2:
-        ToggleGravity();
-        StopCoroutine(ToggleGravity());
-        StartCoroutine(ToggleGravity());
+        StopCoroutine(EnableBalloons());
+        StartCoroutine(EnableBalloons());
         ScoreManager.instance.UpdateScore(PointValues[State]);
         break;
       case 3:
