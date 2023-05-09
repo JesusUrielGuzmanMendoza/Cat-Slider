@@ -121,6 +121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gamemode: 0
-  Speed: 4
+  Speed: 2
   Level: 0
   State: 1
