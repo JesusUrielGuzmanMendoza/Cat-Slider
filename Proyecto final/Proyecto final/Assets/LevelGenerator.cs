@@ -6,6 +6,7 @@ public class LevelGenerator : MonoBehaviour {
     private const float PLAYER_DISTANCE_SPAWN_LEVEL_PART = 200f;
     [SerializeField] private Transform LevelPartStart;
     [SerializeField] private List<Transform> Items;
+    public List<float> ItemProbabilities;
     [SerializeField] private List<Transform> LevelParts;
     [SerializeField] private Transform RoofPart;
     [SerializeField] private Player player;
@@ -24,14 +25,26 @@ public class LevelGenerator : MonoBehaviour {
     private void SpawnLevelPart() {
         Transform chosenLevelPart = LevelParts[Random.Range(0, LevelParts.Count)];
         Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition);
-        int lim = 1 << Items.Count;
-        int randomValue = Random.Range(-lim, +lim);
+        float randomValue = (float)Random.Range(-100f, 100f) / 100f;
 
-        if (randomValue >= 1) {
-            int index = (int)System.Math.Log(randomValue, 2);
-            Transform chosenItem = Items[index];
-            float deltaX = (lastLevelPartTransform.Find("EndPosition").position.x - lastEndPosition.x) / 2.0f;
-            SpawnLevelPart(chosenItem, lastEndPosition + new Vector3(deltaX, 1.0f));
+        // 50% probabilty of spawning an object
+        if (randomValue >= 0) {
+            int index = 0;
+            float accumulatedProbability = 0f;
+
+            for (; index < ItemProbabilities.Count; index++) {
+                accumulatedProbability += ItemProbabilities[index];
+
+                if (accumulatedProbability >= randomValue) {
+                    break;
+                }
+            }
+
+            if (index < ItemProbabilities.Count) {
+                Transform chosenItem = Items[index];
+                float deltaX = (lastLevelPartTransform.Find("EndPosition").position.x - lastEndPosition.x) / 2.0f;
+                SpawnLevelPart(chosenItem, lastEndPosition + new Vector3(deltaX, 1.0f));
+            }
         }
 
         lastEndPosition = lastLevelPartTransform.Find("EndPosition").position;
