@@ -7,6 +7,7 @@ public class LevelGenerator : MonoBehaviour {
     [SerializeField] private Transform LevelPartStart;
     [SerializeField] private List<Transform> Items;
     [SerializeField] private List<Transform> LevelParts;
+    [SerializeField] private Transform RoofPart;
     [SerializeField] private Player player;
     private Vector3 lastEndPosition;
 
@@ -37,6 +38,7 @@ public class LevelGenerator : MonoBehaviour {
     }
 
     private Transform SpawnLevelPart(Transform levelPart, Vector3 spawnPosition) {
+        Instantiate(RoofPart, spawnPosition + new Vector3(0f, 12.5f), Quaternion.identity);
         Transform levelPartTransform = Instantiate(levelPart, spawnPosition, Quaternion.identity);
         return levelPartTransform;
     }

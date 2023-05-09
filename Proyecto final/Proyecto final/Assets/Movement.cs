@@ -3,27 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum Speeds {
-  Slow = 0,
-  Normal = 1,
-  Fast = 2,
-  Faster = 3,
-  Fastest = 4,
-  None = 5
-}
-
 public enum Levels {
   One = 0,
-  Two = 1,
-  Three = 2
+  Two,
+  Three
 }
 
-public enum Gamemodes { Cube = 0, Ship = 1 }
+public enum Gamemodes { Cube = 0, Ship }
 
 public class Movement : MonoBehaviour {
-  public Speeds CurrentSpeed;
+  public float CurrentSpeed;
   public Gamemodes CurrentGamemode;
-  float[] SpeedValues = { 8.6f, 10.4f, 12.96f, 15.6f, 19.27f, 0.0f };
   int[] PointValues = { 100, 500, 1000, 5000 };
   Levels CurrentLevel = Levels.One;
 
@@ -41,12 +31,11 @@ public class Movement : MonoBehaviour {
     rb = GetComponent<Rigidbody2D>();
   }
 
-  IEnumerator GainSpeed(Speeds Speed) {
+  IEnumerator GainSpeed() {
     SoundScript.PlaySound("DrinkSound");
-    Speeds PreviousSpeed = CurrentSpeed;
-    CurrentSpeed = Speed;
+    CurrentSpeed *= 1.2f;
     yield return new WaitForSeconds(3f);
-    CurrentSpeed = PreviousSpeed;
+    CurrentSpeed /= 1.2f;
   }
 
   IEnumerator ToggleGravity() {
@@ -54,10 +43,12 @@ public class Movement : MonoBehaviour {
     SpriteScript.instance.EnableGravitySprite();
     Gravity *= -1;
     rb.gravityScale = Mathf.Abs(rb.gravityScale) * Gravity;
+    CurrentSpeed /= 1.2f;
     yield return new WaitForSeconds(8f);
     Gravity *= -1;
     rb.gravityScale = Mathf.Abs(rb.gravityScale) * Gravity;
     SpriteScript.instance.EnablePlayerSprite();
+    CurrentSpeed *= 1.2f;
   }
 
   IEnumerator EnableShip() {
@@ -71,7 +62,7 @@ public class Movement : MonoBehaviour {
 
   void FixedUpdate() {
     transform.position +=
-        Vector3.right * SpeedValues[(int)CurrentSpeed] * Time.deltaTime;
+        Vector3.right * CurrentSpeed * Time.deltaTime;
 
     if (rb.velocity.y * Gravity < -24.2f)
       rb.velocity = new Vector2(rb.velocity.x, -24.2f * Gravity);
@@ -125,7 +116,7 @@ public class Movement : MonoBehaviour {
     rb.gravityScale = 12.41067f * Gravity;
   }
 
-  void Ship() {
+  void Ship() { 
     if (TouchingWall()) {
       SceneManager.LoadScene((int)CurrentLevel);
     }
@@ -145,21 +136,22 @@ public class Movement : MonoBehaviour {
     SceneManager.LoadScene((int)Level);
   }
 
-  public void ChangeThroughPortal(Gamemodes Gamemode, Speeds Speed, Levels Level, int State) {
+  public void ChangeThroughPortal(Gamemodes Gamemode, Levels Level, int State) {
     switch (State) {
       case 0:
         SoundScript.PlaySound("EatBreadSound");
         ScoreManager.instance.UpdateScore(PointValues[State]);
         break;
       case 1:
-        StopCoroutine(GainSpeed(Speed));
-        StartCoroutine(GainSpeed(Speed));
+        StopCoroutine(GainSpeed());
+        StartCoroutine(GainSpeed());
         ScoreManager.instance.UpdateScore(PointValues[State]);
         break;
       case 2:
         ToggleGravity();
         StopCoroutine(ToggleGravity());
         StartCoroutine(ToggleGravity());
+        ScoreManager.instance.UpdateScore(PointValues[State]);
         break;
       case 3:
         StopCoroutine(EnableShip());

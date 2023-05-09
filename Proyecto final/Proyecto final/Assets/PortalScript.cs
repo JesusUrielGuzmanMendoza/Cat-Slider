@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PortalScript : MonoBehaviour {
   public Gamemodes Gamemode;
-  public Speeds Speed;
   public Levels Level;
   public int State;
 
@@ -12,7 +11,7 @@ public class PortalScript : MonoBehaviour {
     try {
       Destroy(gameObject);
       Movement movement = collision.gameObject.GetComponent<Movement>();
-      movement.ChangeThroughPortal(Gamemode, Speed, Level, State);
+      movement.ChangeThroughPortal(Gamemode, Level, State);
     } catch {}
   }
 }
