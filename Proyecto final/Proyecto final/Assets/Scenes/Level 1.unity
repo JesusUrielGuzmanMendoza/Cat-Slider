@@ -982,7 +982,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelPartStart: {fileID: 1980145398}
-  LevelPart: {fileID: 6320212522921434246, guid: c3fcf722ac59f2217a201285ae0d7dd2, type: 3}
+  LevelParts:
+  - {fileID: 6320212522921434246, guid: c3fcf722ac59f2217a201285ae0d7dd2, type: 3}
+  - {fileID: 1454667574420025120, guid: 8deab95aeb1896b6e800bdb827137713, type: 3}
   player: {fileID: 540166903}
 --- !u!4 &1012907404
 Transform:
@@ -1628,6 +1630,14 @@ PrefabInstance:
     - target: {fileID: 1428124226361208856, guid: fe7d08790d91241f5aefd9a19ce86637, type: 3}
       propertyPath: m_Name
       value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428124226361208858, guid: fe7d08790d91241f5aefd9a19ce86637, type: 3}
+      propertyPath: m_Size.x
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428124226361208859, guid: fe7d08790d91241f5aefd9a19ce86637, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1428124226361208861, guid: fe7d08790d91241f5aefd9a19ce86637, type: 3}
       propertyPath: m_RootOrder
