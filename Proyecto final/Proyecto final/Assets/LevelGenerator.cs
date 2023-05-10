@@ -31,33 +31,40 @@ public class LevelGenerator : MonoBehaviour {
         Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition + new Vector3(Random.Range(0, 3), Random.Range(-1, +2)));
         lastEndPosition = lastLevelPartTransform.Find("EndPosition").position;
         float deltaX = (lastEndPosition.x - lastLevelPartTransform.position.x) / 2.0f;
-        SpawnItem(Items, ItemProbabilities, lastLevelPartTransform.position + new Vector3(deltaX, 1.0f));
-        SpawnItem(RoofItems, RoofItemProbabilities, lastLevelPartTransform.position + new Vector3(deltaX, 6.0f + 1.0f));
-        SpawnItem(AirItems, AirItemProbabilities, lastLevelPartTransform.position + new Vector3(deltaX, 3.5f));
+        bool spawnedItemAtFloor = SpawnItem(Items, ItemProbabilities, lastLevelPartTransform.position + new Vector3(deltaX, 1.0f), 0.5f); 
+        SpawnItem(RoofItems, RoofItemProbabilities, lastLevelPartTransform.position + new Vector3(deltaX - 2.0f, 7.0f), 0.8f);
+
+        if (!spawnedItemAtFloor) {
+            SpawnItem(AirItems, AirItemProbabilities, lastLevelPartTransform.position + new Vector3(deltaX, 3.5f), 0.5f);
+        }
     }
 
-    void SpawnItem(List<Transform> items, List<float> itemProbabilities, Vector3 position) {
-        // 50% probabilty of spawning an object
-        float randomValue = (float)Random.Range(-100f, 100f) / 100f;
+    bool SpawnItem(List<Transform> items, List<float> itemProbabilities, Vector3 position, float spawnProbability) {
+        float probabilityOfSpawning = (float)Random.Range(0, 100f) / 100f;
 
-        if (randomValue >= 0f) {
-            int index = 0;
-            float accumulatedProbability = 0f;
+        if (probabilityOfSpawning < 1f - spawnProbability) {
+            return false;
+        }
 
-            for (; index < itemProbabilities.Count; index++) {
-                accumulatedProbability += itemProbabilities[index];
+        float randomValue = (float)Random.Range(0, 100f) / 100f;
+        int index = 0;
+        float accumulatedProbability = 0f;
 
-                if (accumulatedProbability >= randomValue) {
-                    break;
-                }
-            }
+        for (; index < itemProbabilities.Count; index++) {
+            accumulatedProbability += itemProbabilities[index];
 
-            if (index < itemProbabilities.Count) {
-                Transform chosenItem = items[index];
-                SpawnLevelPart(chosenItem, position);
+            if (accumulatedProbability >= randomValue) {
+                break;
             }
         }
 
+        if (index < itemProbabilities.Count) {
+            Transform chosenItem = items[index];
+            SpawnLevelPart(chosenItem, position);
+            return true;
+        }
+
+        return false;
     }
 
     private Transform SpawnLevelPart(Transform levelPart, Vector3 spawnPosition) {

@@ -1060,7 +1060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelPartStart: {fileID: 1980145398}
   Items:
-  - {fileID: 2593769835150507699, guid: 150ec8f996dc8f36aae0352917f7f2a2, type: 3}
+  - {fileID: 1308106464477238725, guid: a946de68c2ddd23f3b0b61c404a4dd8c, type: 3}
   - {fileID: 1618389052623332004, guid: fca10ef293faef56696a8105788e3e65, type: 3}
   - {fileID: 2042849096242873002, guid: d44655af2192c51d6807f479e76471c8, type: 3}
   - {fileID: 8752115111431019997, guid: 726c4def18ac89a1dad5c3a1601a67bc, type: 3}
@@ -1074,15 +1074,17 @@ MonoBehaviour:
   - {fileID: 6573340881449426730, guid: 6bf0996271f3b64ed90ab690f833f0e3, type: 3}
   - {fileID: 6573340881449426730, guid: 1e5f002211454fa5a961da3e699e5ec7, type: 3}
   - {fileID: 6573340881449426730, guid: a53f6952abed599b4832e5f2872994bf, type: 3}
+  - {fileID: 1308106464477238725, guid: a946de68c2ddd23f3b0b61c404a4dd8c, type: 3}
   RoofItemProbabilities:
-  - 0.25
-  - 0.25
-  - 0.25
-  - 0.25
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.1
+  - 0.6
   AirItems:
   - {fileID: 1308106464477238725, guid: a946de68c2ddd23f3b0b61c404a4dd8c, type: 3}
   AirItemProbabilities:
-  - 0.5
+  - 1
   LevelParts:
   - {fileID: 8187199471845147581, guid: 173b8d73323813b09983e9f294cf4c98, type: 3}
   - {fileID: 3497261208406570412, guid: fa3fb00723d657f01b6cb2d5719ee9ea, type: 3}
