@@ -58,6 +58,7 @@ public class Movement : MonoBehaviour {
 
   void GoDown() {
     if (CurrentGamemode == Gamemodes.Normal) {
+      SoundEffectScript.StopSound();
       SpriteScript.instance.EnablePlayerSprite();
       ToggleGravity();
     }

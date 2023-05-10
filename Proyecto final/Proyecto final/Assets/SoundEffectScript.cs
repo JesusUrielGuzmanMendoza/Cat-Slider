@@ -20,4 +20,8 @@ public class SoundEffectScript : MonoBehaviour
             AudioSource.PlayOneShot(AudioClip, volumeMultiplier);
         }
     }
+
+    public static void StopSound() {
+        AudioSource.Stop();
+    }
 }
