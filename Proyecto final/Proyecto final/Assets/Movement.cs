@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public enum ObjectType {
-  Coin, Gem, Speed, Balloon, Rocket
+  Coin, Gem, Speed, Balloon, Rocket, GoDown
 }
 
-public enum Gamemodes { Cube, Ship }
+public enum Gamemodes { Normal, Ship }
 
 public class Movement : MonoBehaviour {
   private int RespawnScene;
@@ -49,23 +49,27 @@ public class Movement : MonoBehaviour {
     CurrentSpeed = 0f;
   }
 
-  IEnumerator EnableBalloons() {
-    if (CurrentGamemode == Gamemodes.Cube) {
+  void EnableBalloons() {
+    if (CurrentGamemode == Gamemodes.Normal) {
       SpriteScript.instance.EnableGravitySprite();
       ToggleGravity();
-      yield return new WaitForSeconds(8f);
+    }
+  }
+
+  void GoDown() {
+    if (CurrentGamemode == Gamemodes.Normal) {
       SpriteScript.instance.EnablePlayerSprite();
       ToggleGravity();
     }
   }
 
   IEnumerator EnableShip() {
-    if (CurrentGamemode == Gamemodes.Cube) {
+    if (CurrentGamemode == Gamemodes.Normal) {
       SpriteScript.instance.EnableShipSprite();
       Jump(15f);
       CurrentGamemode = Gamemodes.Ship;
       yield return new WaitForSeconds(6f);
-      CurrentGamemode = Gamemodes.Cube;
+      CurrentGamemode = Gamemodes.Normal;
       SpriteScript.instance.EnablePlayerSprite();
     }
   }
@@ -106,7 +110,7 @@ public class Movement : MonoBehaviour {
     rb.AddForce(Vector2.up * power * Gravity, ForceMode2D.Impulse);
   }
 
-  void Cube() {
+  void Normal() {
     if (TouchingWall()) {
       SceneManager.LoadScene(RespawnScene);
     }
@@ -170,8 +174,11 @@ public class Movement : MonoBehaviour {
         ScoreManager.instance.UpdateScore(Points);
         break;
       case ObjectType.Balloon:
-        StopCoroutine(EnableBalloons());
-        StartCoroutine(EnableBalloons());
+        EnableBalloons();
+        ScoreManager.instance.UpdateScore(Points);
+        break;
+      case ObjectType.GoDown:
+        GoDown();
         ScoreManager.instance.UpdateScore(Points);
         break;
       case ObjectType.Rocket:
