@@ -13,13 +13,4 @@ public class SoundScript : MonoBehaviour
         AudioSource.PlayOneShot(AudioClip);
         AudioSource.PlayScheduled(AudioSettings.dspTime + AudioClip.length);
     }
-
-    public static void PlaySound(AudioClip AudioClip, float volumeMultiplier = 1f) {
-        AudioSource.PlayOneShot(AudioClip, volumeMultiplier);
-    }
-
-    // Update is called once per frame
-    void Update() {
-        
-    }
 }

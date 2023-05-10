@@ -128,7 +128,7 @@ public class Movement : MonoBehaviour {
       }
 
       if (Input.GetMouseButton(0)) {
-        SoundScript.PlaySound(JumpSound);
+        SoundEffectScript.PlaySound(JumpSound);
         Jumping = true;
         Jump(26.6581f);
       }
@@ -155,10 +155,11 @@ public class Movement : MonoBehaviour {
   }
 
   public void ActivateObject(ObjectType Type, int Points, AudioClip AudioClip, float VolumeMultiplier) {
-    bool isActivatingRocketTwice = Type == ObjectType.Rocket && CurrentGamemode == Gamemodes.Ship;
+    bool isRocketAndGetsRocket = Type == ObjectType.Rocket && CurrentGamemode == Gamemodes.Ship;
+    bool isRocketAndGetsBalloon = Type == ObjectType.Balloon && CurrentGamemode == Gamemodes.Ship;
 
-    if (!isActivatingRocketTwice) {
-      SoundScript.PlaySound(AudioClip, VolumeMultiplier);
+    if (!isRocketAndGetsRocket && !isRocketAndGetsBalloon) {
+      SoundEffectScript.PlaySound(AudioClip, VolumeMultiplier, Type == ObjectType.Balloon);
     }
 
     switch (Type) {
