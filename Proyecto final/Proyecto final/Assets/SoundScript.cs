@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundScript : MonoBehaviour
 {
     public static AudioClip JumpSound, EatBreadSound, DrinkSound, RocketShipSound,
-                            MagicSound;
+                            MagicSound, CoinSound, GemSound;
     static AudioSource AudioSource;
     public AudioClip AudioClip;
 
@@ -16,6 +16,8 @@ public class SoundScript : MonoBehaviour
         DrinkSound = Resources.Load<AudioClip>("DrinkSound");    
         RocketShipSound = Resources.Load<AudioClip>("RocketShipSound");    
         MagicSound = Resources.Load<AudioClip>("MagicSound");    
+        CoinSound = Resources.Load<AudioClip>("CoinSound");    
+        GemSound = Resources.Load<AudioClip>("GemSound");    
         AudioSource = GetComponent<AudioSource>();
         AudioSource.PlayOneShot(AudioClip);
         AudioSource.PlayScheduled(AudioSettings.dspTime + AudioClip.length);
@@ -26,8 +28,11 @@ public class SoundScript : MonoBehaviour
             case "JumpSound":
                 AudioSource.PlayOneShot(JumpSound);
                 break;
-            case "EatBreadSound":
-                AudioSource.PlayOneShot(EatBreadSound);
+            case "CoinSound":
+                AudioSource.PlayOneShot(CoinSound);
+                break;
+            case "GemSound":
+                AudioSource.PlayOneShot(GemSound);
                 break;
             case "DrinkSound":
                 AudioSource.PlayOneShot(DrinkSound, 3f);

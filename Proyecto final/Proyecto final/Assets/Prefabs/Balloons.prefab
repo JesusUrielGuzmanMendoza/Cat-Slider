@@ -120,7 +120,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c806ee05dccff280b77db3d4bb67500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Gamemode: 1
-  Speed: 4
-  Level: 0
-  State: 2
+  Points: 2000
+  Type: 3

@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum Levels {
-  One = 0,
-  Two,
-  Three
+public enum ObjectType {
+  Coin, Gem, Speed, Balloon, Rocket
 }
 
 public enum Gamemodes { Cube = 0, Ship }
@@ -16,8 +14,6 @@ public class Movement : MonoBehaviour {
   private float previousSpeed;
   private float previousDrag;
   public Gamemodes CurrentGamemode;
-  int[] PointValues = { 100, 500, 1000, 5000 };
-  Levels CurrentLevel = Levels.One;
   public Transform GroundCheckTransform;
   public float GroundCheckRadius;
   public LayerMask GroundMask;
@@ -109,7 +105,7 @@ public class Movement : MonoBehaviour {
 
   void Cube() {
     if (TouchingWall()) {
-      SceneManager.LoadScene((int)CurrentLevel);
+      SceneManager.LoadScene(0);
     }
 
     if (OnGround()) {
@@ -138,7 +134,7 @@ public class Movement : MonoBehaviour {
 
   void Ship() { 
     if (TouchingWall()) {
-      SceneManager.LoadScene((int)CurrentLevel);
+      SceneManager.LoadScene(0);
     }
 
     Sprite.rotation = Quaternion.Euler(0, 0, rb.velocity.y * 2);
@@ -151,34 +147,30 @@ public class Movement : MonoBehaviour {
     rb.gravityScale = rb.gravityScale * Gravity;
   }
 
-  void ChangeLevel(Levels Level) {
-    CurrentLevel = Level;
-    SceneManager.LoadScene((int)Level);
-  }
-
-  public void ChangeThroughPortal(Gamemodes Gamemode, Levels Level, int State) {
-    switch (State) {
-      case 0:
-        SoundScript.PlaySound("EatBreadSound");
-        ScoreManager.instance.UpdateScore(PointValues[State]);
+  public void ActivateObject(ObjectType Type, int Points) {
+    switch (Type) {
+      case ObjectType.Coin:
+        SoundScript.PlaySound("CoinSound");
+        ScoreManager.instance.UpdateScore(Points);
         break;
-      case 1:
+      case ObjectType.Gem:
+        SoundScript.PlaySound("GemSound");
+        ScoreManager.instance.UpdateScore(Points);
+        break;
+      case ObjectType.Speed:
         StopCoroutine(GainSpeed());
         StartCoroutine(GainSpeed());
-        ScoreManager.instance.UpdateScore(PointValues[State]);
+        ScoreManager.instance.UpdateScore(Points);
         break;
-      case 2:
+      case ObjectType.Balloon:
         StopCoroutine(EnableBalloons());
         StartCoroutine(EnableBalloons());
-        ScoreManager.instance.UpdateScore(PointValues[State]);
+        ScoreManager.instance.UpdateScore(Points);
         break;
-      case 3:
+      case ObjectType.Rocket:
         StopCoroutine(EnableShip());
         StartCoroutine(EnableShip());
-        ScoreManager.instance.UpdateScore(PointValues[State]);
-        break;
-      case 4:
-        ChangeLevel(Level);
+        ScoreManager.instance.UpdateScore(Points);
         break;
     }
   }
