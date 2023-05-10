@@ -766,6 +766,7 @@ MonoBehaviour:
   CurrentGamemode: 0
   GroundCheckTransform: {fileID: 438417827}
   GroundCheckRadius: 0.05
+  JumpSound: {fileID: 8300000, guid: 36a476bc7be0e1377b84a4704ac801cf, type: 3}
   GroundMask:
     serializedVersion: 2
     m_Bits: 8

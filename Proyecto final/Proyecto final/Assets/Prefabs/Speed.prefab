@@ -122,3 +122,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Points: 1000
   Type: 2
+  AudioClip: {fileID: 8300000, guid: 6ada6cf44952b5ee3a9b8d68053ecf55, type: 3}
+  VolumeMultiplier: 3

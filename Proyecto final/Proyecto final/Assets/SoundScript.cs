@@ -4,46 +4,18 @@ using UnityEngine;
 
 public class SoundScript : MonoBehaviour
 {
-    public static AudioClip JumpSound, EatBreadSound, DrinkSound, RocketShipSound,
-                            MagicSound, CoinSound, GemSound;
     static AudioSource AudioSource;
     public AudioClip AudioClip;
 
     // Start is called before the first frame update
     void Start() {
-        JumpSound = Resources.Load<AudioClip>("JumpSound");    
-        EatBreadSound = Resources.Load<AudioClip>("EatBreadSound");    
-        DrinkSound = Resources.Load<AudioClip>("DrinkSound");    
-        RocketShipSound = Resources.Load<AudioClip>("RocketShipSound");    
-        MagicSound = Resources.Load<AudioClip>("MagicSound");    
-        CoinSound = Resources.Load<AudioClip>("CoinSound");    
-        GemSound = Resources.Load<AudioClip>("GemSound");    
         AudioSource = GetComponent<AudioSource>();
         AudioSource.PlayOneShot(AudioClip);
         AudioSource.PlayScheduled(AudioSettings.dspTime + AudioClip.length);
     }
 
-    public static void PlaySound(string Sound) {
-        switch (Sound) {
-            case "JumpSound":
-                AudioSource.PlayOneShot(JumpSound);
-                break;
-            case "CoinSound":
-                AudioSource.PlayOneShot(CoinSound);
-                break;
-            case "GemSound":
-                AudioSource.PlayOneShot(GemSound);
-                break;
-            case "DrinkSound":
-                AudioSource.PlayOneShot(DrinkSound, 3f);
-                break;
-            case "MagicSound":
-                AudioSource.PlayOneShot(MagicSound);
-                break;
-            case "RocketShipSound":
-                AudioSource.PlayOneShot(RocketShipSound);
-                break;
-        }
+    public static void PlaySound(AudioClip AudioClip, float volumeMultiplier = 1f) {
+        AudioSource.PlayOneShot(AudioClip, volumeMultiplier);
     }
 
     // Update is called once per frame

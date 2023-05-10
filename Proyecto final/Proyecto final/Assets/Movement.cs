@@ -7,28 +7,33 @@ public enum ObjectType {
   Coin, Gem, Speed, Balloon, Rocket
 }
 
-public enum Gamemodes { Cube = 0, Ship }
+public enum Gamemodes { Cube, Ship }
 
 public class Movement : MonoBehaviour {
+  private int RespawnScene;
   public float CurrentSpeed;
   private float previousSpeed;
   private float previousDrag;
   public Gamemodes CurrentGamemode;
   public Transform GroundCheckTransform;
   public float GroundCheckRadius;
+  public AudioClip JumpSound;
   public LayerMask GroundMask;
   public Transform Sprite;
   Rigidbody2D rb;
-  int Gravity = 1;
-  bool Jumping = false;
-  private bool switchingGravity = false;
+  int Gravity;
+  bool Jumping;
+  private bool switchingGravity;
 
   void Start() {
+    RespawnScene = 0;
+    Gravity = 1;
+    Jumping = false;
+    switchingGravity = false;
     rb = GetComponent<Rigidbody2D>();
   }
 
   IEnumerator GainSpeed() {
-    SoundScript.PlaySound("DrinkSound");
     CurrentSpeed *= 1.2f;
     yield return new WaitForSeconds(3f);
     CurrentSpeed /= 1.2f;
@@ -46,7 +51,6 @@ public class Movement : MonoBehaviour {
 
   IEnumerator EnableBalloons() {
     if (CurrentGamemode == Gamemodes.Cube) {
-      SoundScript.PlaySound("MagicSound");
       SpriteScript.instance.EnableGravitySprite();
       ToggleGravity();
       yield return new WaitForSeconds(8f);
@@ -57,7 +61,6 @@ public class Movement : MonoBehaviour {
 
   IEnumerator EnableShip() {
     if (CurrentGamemode == Gamemodes.Cube) {
-      SoundScript.PlaySound("RocketShipSound");
       SpriteScript.instance.EnableShipSprite();
       Jump(15f);
       CurrentGamemode = Gamemodes.Ship;
@@ -105,7 +108,7 @@ public class Movement : MonoBehaviour {
 
   void Cube() {
     if (TouchingWall()) {
-      SceneManager.LoadScene(0);
+      SceneManager.LoadScene(RespawnScene);
     }
 
     if (OnGround()) {
@@ -121,7 +124,7 @@ public class Movement : MonoBehaviour {
       }
 
       if (Input.GetMouseButton(0)) {
-        SoundScript.PlaySound("JumpSound");
+        SoundScript.PlaySound(JumpSound);
         Jumping = true;
         Jump(26.6581f);
       }
@@ -134,7 +137,7 @@ public class Movement : MonoBehaviour {
 
   void Ship() { 
     if (TouchingWall()) {
-      SceneManager.LoadScene(0);
+      SceneManager.LoadScene(RespawnScene);
     }
 
     Sprite.rotation = Quaternion.Euler(0, 0, rb.velocity.y * 2);
@@ -147,14 +150,18 @@ public class Movement : MonoBehaviour {
     rb.gravityScale = rb.gravityScale * Gravity;
   }
 
-  public void ActivateObject(ObjectType Type, int Points) {
+  public void ActivateObject(ObjectType Type, int Points, AudioClip AudioClip, float VolumeMultiplier) {
+    bool isActivatingRocketTwice = Type == ObjectType.Rocket && CurrentGamemode == Gamemodes.Ship;
+
+    if (!isActivatingRocketTwice) {
+      SoundScript.PlaySound(AudioClip, VolumeMultiplier);
+    }
+
     switch (Type) {
       case ObjectType.Coin:
-        SoundScript.PlaySound("CoinSound");
         ScoreManager.instance.UpdateScore(Points);
         break;
       case ObjectType.Gem:
-        SoundScript.PlaySound("GemSound");
         ScoreManager.instance.UpdateScore(Points);
         break;
       case ObjectType.Speed:

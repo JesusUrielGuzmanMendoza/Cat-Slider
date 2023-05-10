@@ -122,3 +122,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Points: 500
   Type: 1
+  AudioClip: {fileID: 8300000, guid: b737af0f393f4d4bd9ffd4a8c83de64b, type: 3}
