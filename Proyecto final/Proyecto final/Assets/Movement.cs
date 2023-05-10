@@ -49,21 +49,26 @@ public class Movement : MonoBehaviour {
   }
 
   IEnumerator EnableBalloons() {
-    SoundScript.PlaySound("MagicSound");
-    SpriteScript.instance.EnableGravitySprite();
-    ToggleGravity();
-    yield return new WaitForSeconds(8f);
-    SpriteScript.instance.EnablePlayerSprite();
-    ToggleGravity();
+    if (CurrentGamemode == Gamemodes.Cube) {
+      SoundScript.PlaySound("MagicSound");
+      SpriteScript.instance.EnableGravitySprite();
+      ToggleGravity();
+      yield return new WaitForSeconds(8f);
+      SpriteScript.instance.EnablePlayerSprite();
+      ToggleGravity();
+    }
   }
 
   IEnumerator EnableShip() {
-    SoundScript.PlaySound("RocketShipSound");
-    SpriteScript.instance.EnableShipSprite();
-    CurrentGamemode = Gamemodes.Ship;
-    yield return new WaitForSeconds(6f);
-    CurrentGamemode = Gamemodes.Cube;
-    SpriteScript.instance.EnablePlayerSprite();
+    if (CurrentGamemode == Gamemodes.Cube) {
+      SoundScript.PlaySound("RocketShipSound");
+      SpriteScript.instance.EnableShipSprite();
+      Jump(15f);
+      CurrentGamemode = Gamemodes.Ship;
+      yield return new WaitForSeconds(6f);
+      CurrentGamemode = Gamemodes.Cube;
+      SpriteScript.instance.EnablePlayerSprite();
+    }
   }
 
   void FixedUpdate() {
@@ -97,6 +102,11 @@ public class Movement : MonoBehaviour {
         GroundMask);
   }
 
+  void Jump(float power) {
+    rb.velocity = Vector2.zero;
+    rb.AddForce(Vector2.up * power * Gravity, ForceMode2D.Impulse);
+  }
+
   void Cube() {
     if (TouchingWall()) {
       SceneManager.LoadScene((int)CurrentLevel);
@@ -117,8 +127,7 @@ public class Movement : MonoBehaviour {
       if (Input.GetMouseButton(0)) {
         SoundScript.PlaySound("JumpSound");
         Jumping = true;
-        rb.velocity = Vector2.zero;
-        rb.AddForce(Vector2.up * 26.6581f * Gravity, ForceMode2D.Impulse);
+        Jump(26.6581f);
       }
     } else if (Jumping) {
       Sprite.Rotate(Vector3.back, 2 * 452.4152186f * Time.deltaTime * Gravity);
