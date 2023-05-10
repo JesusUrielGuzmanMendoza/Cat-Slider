@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour {
-    private const float PLAYER_DISTANCE_SPAWN_LEVEL_PART = 1000f;
+    private const float PLAYER_DISTANCE_SPAWN_LEVEL_PART = 20f;
     [SerializeField] private Transform LevelPartStart;
     [SerializeField] private List<Transform> Items;
     public List<float> ItemProbabilities;
+    [SerializeField] private List<Transform> RoofItems;
+    public List<float> RoofItemProbabilities;
     [SerializeField] private List<Transform> LevelParts;
     [SerializeField] private Transform RoofPart;
     [SerializeField] private Player player;
@@ -25,6 +27,13 @@ public class LevelGenerator : MonoBehaviour {
     private void SpawnLevelPart() {
         Transform chosenLevelPart = LevelParts[Random.Range(0, LevelParts.Count)];
         Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition);
+        float deltaX = (lastLevelPartTransform.Find("EndPosition").position.x - lastEndPosition.x) / 2.0f;
+        SpawnItem(Items, ItemProbabilities, lastEndPosition + new Vector3(deltaX, 1.0f));
+        SpawnItem(RoofItems, RoofItemProbabilities, lastEndPosition + new Vector3(deltaX, 6.0f + 1.0f));
+        lastEndPosition = lastLevelPartTransform.Find("EndPosition").position;
+    }
+
+    void SpawnItem(List<Transform> items, List<float> itemProbabilities, Vector3 position) {
         // 50% probabilty of spawning an object
         float randomValue = (float)Random.Range(-100f, 100f) / 100f;
 
@@ -32,22 +41,20 @@ public class LevelGenerator : MonoBehaviour {
             int index = 0;
             float accumulatedProbability = 0f;
 
-            for (; index < ItemProbabilities.Count; index++) {
-                accumulatedProbability += ItemProbabilities[index];
+            for (; index < itemProbabilities.Count; index++) {
+                accumulatedProbability += itemProbabilities[index];
 
                 if (accumulatedProbability >= randomValue) {
                     break;
                 }
             }
 
-            if (index < ItemProbabilities.Count) {
-                Transform chosenItem = Items[index];
-                float deltaX = (lastLevelPartTransform.Find("EndPosition").position.x - lastEndPosition.x) / 2.0f;
-                SpawnLevelPart(chosenItem, lastEndPosition + new Vector3(deltaX, 1.0f));
+            if (index < itemProbabilities.Count) {
+                Transform chosenItem = items[index];
+                SpawnLevelPart(chosenItem, position);
             }
         }
 
-        lastEndPosition = lastLevelPartTransform.Find("EndPosition").position;
     }
 
     private Transform SpawnLevelPart(Transform levelPart, Vector3 spawnPosition) {

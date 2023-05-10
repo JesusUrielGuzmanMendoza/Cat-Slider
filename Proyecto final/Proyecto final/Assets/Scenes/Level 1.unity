@@ -1069,6 +1069,12 @@ MonoBehaviour:
   - 0.25
   - 0.125
   - 0.0625
+  RoofItems:
+  - {fileID: 2593769835150507699, guid: 150ec8f996dc8f36aae0352917f7f2a2, type: 3}
+  - {fileID: 1618389052623332004, guid: fca10ef293faef56696a8105788e3e65, type: 3}
+  RoofItemProbabilities:
+  - 0.5
+  - 0.25
   LevelParts:
   - {fileID: 7751267206224575889, guid: 8deab95aeb1896b6e800bdb827137713, type: 3}
   - {fileID: 3393176725293067422, guid: 0b3d5f6e785357dba891dee04d828304, type: 3}
