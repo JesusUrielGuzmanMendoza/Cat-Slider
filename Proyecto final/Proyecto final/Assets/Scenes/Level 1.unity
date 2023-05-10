@@ -767,6 +767,7 @@ MonoBehaviour:
   GroundCheckTransform: {fileID: 438417827}
   GroundCheckRadius: 0.05
   JumpSound: {fileID: 8300000, guid: 36a476bc7be0e1377b84a4704ac801cf, type: 3}
+  JumpSoundVolumeMultiplier: 2
   GroundMask:
     serializedVersion: 2
     m_Bits: 8
@@ -1060,6 +1061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelPartStart: {fileID: 1980145398}
+  ItemSpawnProbability: 1
   Items:
   - {fileID: 1308106464477238725, guid: a946de68c2ddd23f3b0b61c404a4dd8c, type: 3}
   - {fileID: 1618389052623332004, guid: fca10ef293faef56696a8105788e3e65, type: 3}

@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour {
   public Transform GroundCheckTransform;
   public float GroundCheckRadius;
   public AudioClip JumpSound;
+  public float JumpSoundVolumeMultiplier = 1f;
   public LayerMask GroundMask;
   public Transform Sprite;
   Rigidbody2D rb;
@@ -58,9 +59,11 @@ public class Movement : MonoBehaviour {
 
   void GoDown() {
     if (CurrentGamemode == Gamemodes.Normal) {
-      SoundEffectScript.StopSound();
       SpriteScript.instance.EnablePlayerSprite();
       ToggleGravity();
+    } else if (CurrentGamemode == Gamemodes.Ship) {
+      SpriteScript.instance.EnablePlayerSprite();
+      CurrentGamemode = Gamemodes.Normal;
     }
   }
 
@@ -129,7 +132,7 @@ public class Movement : MonoBehaviour {
       }
 
       if (Input.GetMouseButton(0)) {
-        SoundEffectScript.PlaySound(JumpSound);
+        SoundEffectScript.PlaySound(JumpSound, JumpSoundVolumeMultiplier);
         Jumping = true;
         Jump(26.6581f);
       }
@@ -156,6 +159,10 @@ public class Movement : MonoBehaviour {
   }
 
   public void ActivateObject(ObjectType Type, int Points, AudioClip AudioClip, float VolumeMultiplier) {
+    if (Type == ObjectType.GoDown) {
+      SoundEffectScript.StopSound();
+    }
+
     bool isRocketAndGetsRocket = Type == ObjectType.Rocket && CurrentGamemode == Gamemodes.Ship;
     bool isRocketAndGetsBalloon = Type == ObjectType.Balloon && CurrentGamemode == Gamemodes.Ship;
 
