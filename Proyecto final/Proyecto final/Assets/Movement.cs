@@ -73,8 +73,11 @@ public class Movement : MonoBehaviour {
       Jump(15f);
       CurrentGamemode = Gamemodes.Ship;
       yield return new WaitForSeconds(6f);
-      CurrentGamemode = Gamemodes.Normal;
-      SpriteScript.instance.EnablePlayerSprite();
+
+      if (CurrentGamemode == Gamemodes.Ship) {
+        CurrentGamemode = Gamemodes.Normal;
+        SpriteScript.instance.EnablePlayerSprite();
+      }
     }
   }
 
