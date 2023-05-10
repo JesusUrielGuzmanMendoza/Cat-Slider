@@ -1070,11 +1070,19 @@ MonoBehaviour:
   - 0.125
   - 0.0625
   RoofItems:
-  - {fileID: 2593769835150507699, guid: 150ec8f996dc8f36aae0352917f7f2a2, type: 3}
-  - {fileID: 1618389052623332004, guid: fca10ef293faef56696a8105788e3e65, type: 3}
+  - {fileID: 6573340881449426730, guid: 77d5e90fa92fabeb788534ae6db312ac, type: 3}
+  - {fileID: 6573340881449426730, guid: 6bf0996271f3b64ed90ab690f833f0e3, type: 3}
+  - {fileID: 6573340881449426730, guid: 1e5f002211454fa5a961da3e699e5ec7, type: 3}
+  - {fileID: 6573340881449426730, guid: a53f6952abed599b4832e5f2872994bf, type: 3}
   RoofItemProbabilities:
-  - 0.5
   - 0.25
+  - 0.25
+  - 0.25
+  - 0.25
+  AirItems:
+  - {fileID: 1308106464477238725, guid: a946de68c2ddd23f3b0b61c404a4dd8c, type: 3}
+  AirItemProbabilities:
+  - 0.5
   LevelParts:
   - {fileID: 8187199471845147581, guid: 173b8d73323813b09983e9f294cf4c98, type: 3}
   - {fileID: 3497261208406570412, guid: fa3fb00723d657f01b6cb2d5719ee9ea, type: 3}

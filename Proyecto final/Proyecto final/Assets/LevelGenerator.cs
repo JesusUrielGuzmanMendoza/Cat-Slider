@@ -9,6 +9,8 @@ public class LevelGenerator : MonoBehaviour {
     public List<float> ItemProbabilities;
     [SerializeField] private List<Transform> RoofItems;
     public List<float> RoofItemProbabilities;
+    [SerializeField] private List<Transform> AirItems;
+    public List<float> AirItemProbabilities;
     [SerializeField] private List<Transform> LevelParts;
     [SerializeField] private Transform RoofPart;
     [SerializeField] private Player player;
@@ -31,6 +33,7 @@ public class LevelGenerator : MonoBehaviour {
         float deltaX = (lastEndPosition.x - lastLevelPartTransform.position.x) / 2.0f;
         SpawnItem(Items, ItemProbabilities, lastLevelPartTransform.position + new Vector3(deltaX, 1.0f));
         SpawnItem(RoofItems, RoofItemProbabilities, lastLevelPartTransform.position + new Vector3(deltaX, 6.0f + 1.0f));
+        SpawnItem(AirItems, AirItemProbabilities, lastLevelPartTransform.position + new Vector3(deltaX, 3.5f));
     }
 
     void SpawnItem(List<Transform> items, List<float> itemProbabilities, Vector3 position) {
@@ -59,6 +62,7 @@ public class LevelGenerator : MonoBehaviour {
 
     private Transform SpawnLevelPart(Transform levelPart, Vector3 spawnPosition) {
         Instantiate(RoofPart, spawnPosition + new Vector3(0f, 12.5f), Quaternion.identity);
+        Instantiate(RoofPart, spawnPosition + new Vector3(-2f, 12.5f), Quaternion.identity);
         Transform levelPartTransform = Instantiate(levelPart, spawnPosition, Quaternion.identity);
         return levelPartTransform;
     }
