@@ -27,10 +27,10 @@ public class LevelGenerator : MonoBehaviour {
     private void SpawnLevelPart() {
         Transform chosenLevelPart = LevelParts[Random.Range(0, LevelParts.Count)];
         Transform lastLevelPartTransform = SpawnLevelPart(chosenLevelPart, lastEndPosition);
-        float deltaX = (lastLevelPartTransform.Find("EndPosition").position.x - lastEndPosition.x) / 2.0f;
-        SpawnItem(Items, ItemProbabilities, lastEndPosition + new Vector3(deltaX, 1.0f));
-        SpawnItem(RoofItems, RoofItemProbabilities, lastEndPosition + new Vector3(deltaX, 6.0f + 1.0f));
         lastEndPosition = lastLevelPartTransform.Find("EndPosition").position;
+        float deltaX = (lastEndPosition.x - lastLevelPartTransform.position.x) / 2.0f;
+        SpawnItem(Items, ItemProbabilities, lastLevelPartTransform.position + new Vector3(deltaX, 1.0f));
+        SpawnItem(RoofItems, RoofItemProbabilities, lastLevelPartTransform.position + new Vector3(deltaX, 6.0f + 1.0f));
     }
 
     void SpawnItem(List<Transform> items, List<float> itemProbabilities, Vector3 position) {
