@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour {
   private bool switchingGravity;
 
   void Start() {
-    RespawnScene = 0;
+    RespawnScene = 1;
     Gravity = 1;
     Jumping = false;
     switchingGravity = false;
