@@ -20,6 +20,7 @@ public class Movement : MonoBehaviour {
   public AudioClip JumpSound;
   public float JumpSoundVolumeMultiplier = 1f;
   public LayerMask GroundMask;
+  public LayerMask DeathGroundMask;
   public Transform Sprite;
   Rigidbody2D rb;
   int Gravity;
@@ -95,21 +96,25 @@ public class Movement : MonoBehaviour {
     Invoke(CurrentGamemode.ToString(), 0);
   }
 
-  bool OnGround() {
+  bool OnGround(LayerMask mask) {
     return Physics2D.OverlapBox(
         GroundCheckTransform.position + Vector3.up -
             Vector3.up * (Gravity - 1 / -2),
         Vector2.right * 1.1f + Vector2.up * GroundCheckRadius,
         0,
-        GroundMask);
+        mask);
   }
 
-  bool TouchingWall() {
+  bool TouchingWall(LayerMask mask) {
     return Physics2D.OverlapBox(
         (Vector2)transform.position + (Vector2.right * 0.55f),
         Vector2.up * 0.8f + (Vector2.right * GroundCheckRadius),
         0,
-        GroundMask);
+        mask);
+  }
+
+  bool TouchingDeathGround() {
+    return OnGround(DeathGroundMask) || TouchingWall(DeathGroundMask);
   }
 
   void Jump(float power) {
@@ -118,11 +123,11 @@ public class Movement : MonoBehaviour {
   }
 
   void Normal() {
-    if (TouchingWall()) {
+    if (TouchingWall(GroundMask) || TouchingDeathGround()) {
       SceneManager.LoadScene(RespawnScene);
     }
 
-    if (OnGround()) {
+    if (OnGround(GroundMask)) {
       Jumping = false;
       Vector3 Rotation = Sprite.rotation.eulerAngles;
       Rotation.z = Mathf.Round(Rotation.z / 360) * 360;
@@ -147,7 +152,7 @@ public class Movement : MonoBehaviour {
   }
 
   void Ship() { 
-    if (TouchingWall()) {
+    if (TouchingWall(GroundMask) || TouchingDeathGround()) {
       SceneManager.LoadScene(RespawnScene);
     }
 

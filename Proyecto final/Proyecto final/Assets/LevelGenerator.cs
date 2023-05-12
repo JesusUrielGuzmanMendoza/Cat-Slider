@@ -14,6 +14,7 @@ public class LevelGenerator : MonoBehaviour {
     public List<float> AirItemProbabilities;
     [SerializeField] private List<Transform> LevelParts;
     [SerializeField] private Transform RoofPart;
+    [SerializeField] private Transform DeathGroundPart;
     [SerializeField] private Player player;
     private Vector3 lastEndPosition;
 
@@ -85,6 +86,8 @@ public class LevelGenerator : MonoBehaviour {
         Transform levelPartTransform = Instantiate(levelPart, spawnPosition, Quaternion.identity);
         float paddingX = levelPartTransform.position.x - lastEndPosition.x;
         Instantiate(RoofPart, spawnPosition + new Vector3(-paddingX, 12.5f), Quaternion.identity);
+        Instantiate(DeathGroundPart, spawnPosition + new Vector3(0f, -20f), Quaternion.identity);
+        Instantiate(DeathGroundPart, spawnPosition + new Vector3(-paddingX, -20f), Quaternion.identity);
         return levelPartTransform;
     }
 }

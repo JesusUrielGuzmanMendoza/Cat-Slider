@@ -625,7 +625,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.089892, y: 2.2999997, z: -10}
+  m_LocalPosition: {x: 6.201211, y: 2.2999997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -771,6 +771,9 @@ MonoBehaviour:
   GroundMask:
     serializedVersion: 2
     m_Bits: 8
+  DeathGroundMask:
+    serializedVersion: 2
+    m_Bits: 128
   Sprite: {fileID: 1021592803}
 --- !u!114 &540166903
 MonoBehaviour:
@@ -924,7 +927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817389956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.089892, y: 2.2999997, z: -10}
+  m_LocalPosition: {x: 6.201211, y: 2.2999997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1094,6 +1097,7 @@ MonoBehaviour:
   - {fileID: 8187199471845147581, guid: 173b8d73323813b09983e9f294cf4c98, type: 3}
   - {fileID: 3497261208406570412, guid: fa3fb00723d657f01b6cb2d5719ee9ea, type: 3}
   RoofPart: {fileID: 3589908164240720898, guid: 192dfcc30fbd9fdaa870b449783c2ac7, type: 3}
+  DeathGroundPart: {fileID: 8091497099860088664, guid: e684cb26fe7d291619b694dce7fbbbd0, type: 3}
   player: {fileID: 540166903}
 --- !u!4 &1012907404
 Transform:
