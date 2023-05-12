@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Dan.Main;
+using UnityEngine.SceneManagement;
 
 public class Leaderboard : MonoBehaviour {
     [SerializeField] private List<TextMeshProUGUI> Names;
     [SerializeField] private List<TextMeshProUGUI> Scores;
     private string publicLeaderboardKey = "b584c123daffbd48c1280d2077a4b3416e31929adefca71cfcba89edfd56cd6c";
+
+    public void GoToMainMenu() {
+        SceneManager.LoadScene(0);
+    }
 
     private void Start() {
         GetLeaderboard();
