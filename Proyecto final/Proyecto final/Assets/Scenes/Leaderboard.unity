@@ -1074,7 +1074,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -376.7, y: 131.7}
+  m_AnchoredPosition: {x: -376.7, y: 137}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &538493769
@@ -1630,8 +1630,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -13.599976, y: 131.7}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -13.599976, y: 134.35}
+  m_SizeDelta: {x: 0, y: 5.300003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1025912986
 MonoBehaviour:
@@ -1847,7 +1847,7 @@ MonoBehaviour:
   submitScoreEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4143542111588340319, guid: 8d66cf6ac2d74d3d69299853f68db1b4, type: 3}
+      - m_Target: {fileID: 1512722682}
         m_TargetAssemblyTypeName: Leaderboard, Assembly-CSharp
         m_MethodName: SetLeaderboardEntry
         m_Mode: 0
@@ -2495,6 +2495,72 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501696994}
   m_CullTransparentMesh: 1
+--- !u!1 &1512722681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1512722683}
+  - component: {fileID: 1512722682}
+  m_Layer: 0
+  m_Name: Leaderboard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1512722682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512722681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc06d0763070058959623cb4427b35ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Names:
+  - {fileID: 378386644}
+  - {fileID: 129962836}
+  - {fileID: 1358291113}
+  - {fileID: 2080365172}
+  - {fileID: 312500337}
+  - {fileID: 528030865}
+  - {fileID: 738260016}
+  - {fileID: 1744840409}
+  - {fileID: 1695353638}
+  - {fileID: 670205720}
+  Scores:
+  - {fileID: 1892657637}
+  - {fileID: 1909882235}
+  - {fileID: 1128205756}
+  - {fileID: 731440158}
+  - {fileID: 2064601828}
+  - {fileID: 235375513}
+  - {fileID: 1221858168}
+  - {fileID: 1937008243}
+  - {fileID: 1490400514}
+  - {fileID: 1979088001}
+--- !u!4 &1512722683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512722681}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 539.5576, y: 281.59302, z: -2.0283322}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1571905751
 GameObject:
   m_ObjectHideFlags: 0
