@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class ScoreManager : MonoBehaviour {
   public static ScoreManager instance;
   public TextMeshProUGUI UsernameText;
   public TextMeshProUGUI ScoreText;
   public TextMeshProUGUI HighScoreText;
+  public UnityEvent<string, int> submitScoreEvent;
   int Score = 0;
   int HighScore = 0;
+
+  public void SubmitScore() {
+    submitScoreEvent.Invoke(PlayerPrefs.GetString("username", "Anonymous"), Score);
+  }
 
   private void Awake() {
     instance = this;

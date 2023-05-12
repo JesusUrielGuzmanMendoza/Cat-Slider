@@ -122,9 +122,14 @@ public class Movement : MonoBehaviour {
     rb.AddForce(Vector2.up * power * Gravity, ForceMode2D.Impulse);
   }
 
+  void Die() {
+    ScoreManager.instance.SubmitScore();
+    SceneManager.LoadScene(RespawnScene);
+  }
+
   void Normal() {
     if (TouchingWall(GroundMask) || TouchingDeathGround()) {
-      SceneManager.LoadScene(RespawnScene);
+      Die();
     }
 
     if (OnGround(GroundMask)) {
@@ -153,7 +158,7 @@ public class Movement : MonoBehaviour {
 
   void Ship() { 
     if (TouchingWall(GroundMask) || TouchingDeathGround()) {
-      SceneManager.LoadScene(RespawnScene);
+      Die();
     }
 
     Sprite.rotation = Quaternion.Euler(0, 0, rb.velocity.y * 2);
