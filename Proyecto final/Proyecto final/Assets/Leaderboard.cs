@@ -23,7 +23,7 @@ public class Leaderboard : MonoBehaviour {
             int loopLength = (response.Length < Names.Count ? response.Length : Names.Count);
 
             for (int i = 0; i < loopLength; i++) {
-                Names[i].text = response[i].Username;
+                Names[i].text = (i + 1).ToString() + ". " + response[i].Username;
                 Scores[i].text = response[i].Score.ToString();
             }
         }));
