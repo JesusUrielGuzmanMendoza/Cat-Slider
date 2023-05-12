@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class MainMenuScript : MonoBehaviour {
 
     public void GoToMenu()
@@ -21,6 +22,11 @@ public class MainMenuScript : MonoBehaviour {
     public void Credits()
     {
         SceneManager.LoadScene(3);
+    }
+
+    public void Leaderboard()
+    {
+        SceneManager.LoadScene(4);
     }
 
     public void ReadUserInput(string input) {

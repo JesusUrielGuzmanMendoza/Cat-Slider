@@ -124,6 +124,7 @@ public class Movement : MonoBehaviour {
 
   void Die() {
     ScoreManager.instance.SubmitScore();
+    SceneManager.LoadScene(4);
     SceneManager.LoadScene(RespawnScene);
   }
 
@@ -159,6 +160,7 @@ public class Movement : MonoBehaviour {
   void Ship() { 
     if (TouchingWall(GroundMask) || TouchingDeathGround()) {
       Die();
+      SceneManager.LoadScene(4);
     }
 
     Sprite.rotation = Quaternion.Euler(0, 0, rb.velocity.y * 2);
