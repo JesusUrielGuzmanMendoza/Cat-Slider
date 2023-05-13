@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class MainMenuScript : MonoBehaviour {
 
-    public void GoToMenu()
-    {
+    public void GoToMenu() {
         SceneManager.LoadScene(0);
     }
+
     public void StartGame() {
         SceneManager.LoadScene("Level 1");
     }
@@ -31,6 +31,5 @@ public class MainMenuScript : MonoBehaviour {
 
     public void ReadUserInput(string input) {
         PlayerPrefs.SetString("username", input);
-        Debug.Log(input);
     }
 }
