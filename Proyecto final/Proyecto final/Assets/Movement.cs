@@ -123,7 +123,6 @@ public class Movement : MonoBehaviour {
   }
 
   void Die() {
-    ScoreManager.instance.SubmitScore();
     SceneManager.LoadScene(RespawnScene);
   }
 
