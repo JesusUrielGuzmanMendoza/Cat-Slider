@@ -26,7 +26,7 @@ public class ScoreManager : MonoBehaviour {
     HighScore = PlayerPrefs.GetInt("highscore", 0);
     UsernameText.text = PlayerPrefs.GetString("username", "Anonymous");
     ScoreText.text = Score.ToString();
-    HighScoreText.text = "Highscore: " + HighScore.ToString();
+    HighScoreText.text = "Puntaje más alto: " + HighScore.ToString();
   }
 
   // Update is called once per frame
