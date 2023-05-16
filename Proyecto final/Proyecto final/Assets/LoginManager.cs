@@ -21,14 +21,6 @@ public class LoginManager : MonoBehaviour {
                 Debug.Log("Could not start session");
                 done = true;
             }
-
-            LootLockerSDKManager.SetPlayerName("Anonymous", (response) => {
-                if (response.success) {
-                    Debug.Log("Succesfully reset player name");
-                } else {
-                    Debug.Log("Could not reset player name: " + response.Error);
-                }
-            });
         });
 
         yield return new WaitWhile(() => done == false);

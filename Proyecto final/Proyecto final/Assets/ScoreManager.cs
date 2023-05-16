@@ -9,9 +9,7 @@ public class ScoreManager : MonoBehaviour {
   public static ScoreManager instance;
   public TextMeshProUGUI UsernameText;
   public TextMeshProUGUI ScoreText;
-  // public TextMeshProUGUI HighScoreText;
   int Score = 0;
-  // int HighScore = 0;
 
   private void Awake() {
     instance = this;
@@ -19,7 +17,20 @@ public class ScoreManager : MonoBehaviour {
 
   void Start() {
     PlayerPrefs.SetInt("score", 0);
-    UsernameText.text = PlayerPrefs.GetString("username", "Anonymous");
+    string username = PlayerPrefs.GetString("username", "Anonymous");
+    UsernameText.text = username;
+
+    if (username == "Anonymous") {
+      LootLockerSDKManager.SetPlayerName("Anonymous", (response) => {
+          if (response.success) {
+              Debug.Log("Succesfully reset player name");
+          } else {
+              Debug.Log("Could not reset player name: " + response.Error);
+          }
+      });
+    }
+
+
     ScoreText.text = Score.ToString();
   }
 
