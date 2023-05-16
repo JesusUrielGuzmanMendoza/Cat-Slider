@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using LootLocker.Requests;
 
 public class MainMenuScript : MonoBehaviour {
-
     public void GoToMenu() {
         SceneManager.LoadScene(0);
     }
@@ -31,5 +30,13 @@ public class MainMenuScript : MonoBehaviour {
 
     public void ReadUserInput(string input) {
         PlayerPrefs.SetString("username", input);
+
+        LootLockerSDKManager.SetPlayerName(input, (response) => {
+            if (response.success) {
+                Debug.Log("Succesfully set player name");
+            } else {
+                Debug.Log("Could not set player name: " + response.Error);
+            }
+        });
     }
 }

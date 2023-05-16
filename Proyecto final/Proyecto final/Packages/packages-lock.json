@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.lootlocker.lootlockersdk": {
+      "version": "https://github.com/LootLocker/unity-sdk.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "345ed86ed189a6eb73b43bf629d98cb8ae1955b0"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.9",
       "depth": 1,
@@ -128,6 +135,23 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.connect.share": {
+      "version": "4.2.3",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.editorcoroutines": "1.0.0",
+        "com.unity.settings-manager": "1.0.2"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.editorcoroutines": {
+      "version": "1.0.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
     "com.unity.ext.nunit": {
       "version": "1.0.6",
       "depth": 1,
@@ -217,6 +241,13 @@
     "com.unity.profiling.core": {
       "version": "1.0.2",
       "depth": 2,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.settings-manager": {
+      "version": "1.0.3",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

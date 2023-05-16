@@ -1654,9 +1654,9 @@ MonoBehaviour:
   submitScoreEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1290881181}
+      - m_Target: {fileID: 1871620968}
         m_TargetAssemblyTypeName: Leaderboard, Assembly-CSharp
-        m_MethodName: SetLeaderboardEntry
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1666,62 +1666,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &1290881180
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1290881182}
-  - component: {fileID: 1290881181}
-  m_Layer: 0
-  m_Name: Leaderboard
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1290881181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1290881180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc06d0763070058959623cb4427b35ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Names:
-  - {fileID: 730314335}
-  - {fileID: 1949840756}
-  - {fileID: 144273749}
-  - {fileID: 533730390}
-  - {fileID: 155895111}
-  Scores:
-  - {fileID: 1334441547}
-  - {fileID: 1654817429}
-  - {fileID: 1417445888}
-  - {fileID: 125473056}
-  - {fileID: 586284786}
---- !u!4 &1290881182
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1290881180}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 539.5576, y: 281.59302, z: -2.0283322}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  leaderboard: {fileID: 1871620969}
 --- !u!1 &1312714849
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,6 +2485,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654817427}
   m_CullTransparentMesh: 1
+--- !u!1 &1871620968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1871620970}
+  - component: {fileID: 1871620969}
+  m_Layer: 0
+  m_Name: LootLockerLeaderboard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1871620969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871620968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3846ba25e341dd9889c490d5bca2cd9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Names:
+  - {fileID: 730314335}
+  - {fileID: 1949840756}
+  - {fileID: 144273749}
+  - {fileID: 533730390}
+  - {fileID: 155895111}
+  Scores:
+  - {fileID: 1334441547}
+  - {fileID: 1654817429}
+  - {fileID: 1417445888}
+  - {fileID: 125473056}
+  - {fileID: 586284786}
+--- !u!4 &1871620970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871620968}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.99593, y: 8.098441, z: -0.40865463}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1949840754
 GameObject:
   m_ObjectHideFlags: 0
